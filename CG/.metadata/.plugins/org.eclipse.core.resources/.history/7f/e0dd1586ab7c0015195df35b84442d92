@@ -90,6 +90,7 @@ public class ObjectLoader extends JFrame
 		
 		// Objekt aus geladener Datei auslesen
 		BranchGroup theScene = loadedScene.getSceneGroup();
+		loadedScene.
 		theScene.addChild(bg);
 		
 		universe.addBranchGraph(theScene);

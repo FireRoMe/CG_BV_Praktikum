@@ -77,7 +77,7 @@ public class ObjectLoader extends JFrame
 		// Szene aus Datei einlesen
 		try
 		{
-			loadedScene = obj.load("testObject3.obj");
+			loadedScene = obj.load("testObject2.obj");
 		} catch (FileNotFoundException | IncorrectFormatException
 				| ParsingErrorException e)
 		{
