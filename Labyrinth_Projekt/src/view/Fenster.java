@@ -9,7 +9,7 @@ public class Fenster
 {
 	private int groesseX;
 	private int groesseY;
-	
+
 	public Fenster()
 	{
 		//TODO: Konstruktor
