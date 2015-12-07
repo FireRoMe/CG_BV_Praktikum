@@ -20,4 +20,13 @@ public class ImageLoader
 		//lade ein Bild in b
 		return b;
 	}
+	
+	public DATA analyzeImage()
+	{
+		//TODO: Bild analysieren und Daten speichern
+		
+		
+		
+		return DATA;
+	}
 }
