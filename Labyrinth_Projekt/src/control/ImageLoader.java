@@ -49,6 +49,20 @@ public class ImageLoader
 				{
 					
 				}
+				else
+				
+				if (c.getRed() < 130)
+				{
+					
+				}
+				else 
+					
+				if (c.getBlue() < 130)
+				{
+					
+				}
+				else 
+					
 			}
 			System.out.println("");
 		}
