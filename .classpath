@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="CG/Object_Loader_Demo/src"/>
+	<classpathentry kind="src" path="Labyrinth_Projekt/src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="CG/Object_Loader_Demo/bin"/>
+</classpath>
