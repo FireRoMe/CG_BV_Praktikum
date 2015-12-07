@@ -16,7 +16,7 @@ public class Spiel
 		// TODO: Spiel starten
 		ImageLoader load = new ImageLoader();
 		load.loadImage();
-		load.analyzeImage();
+		load.filter();
 	}
 	
 	public Spiel()

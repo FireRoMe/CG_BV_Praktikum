@@ -38,6 +38,7 @@ public class ImageLoader
 	
 	public void filter()
 	{
+		afterFilter = new BufferedImage(b.getWidth(), b.getHeight(),BufferedImage.TYPE_INT_RGB);
 		for(int i=0; i < b.getHeight(); i++)
 		{
 			for(int j=0; j < b.getWidth(); j++)
@@ -45,26 +46,52 @@ public class ImageLoader
 				int currentRGB = b.getRGB(i, j);
 				Color c = new Color(currentRGB);
 				
-				if (c.getGreen() < 130)
+				int red;
+				int green;
+				int blue;
+				
+				if(c.getRed() <= 130)
 				{
-					
+					red = 0;
 				}
 				else
+				{
+					red = 255;
+				}
 				
-				if (c.getRed() < 130)
+				if(c.getGreen() <= 130)
 				{
-					
+					green = 0;
 				}
-				else 
-					
-				if (c.getBlue() < 130)
+				else
 				{
-					
+					green = 255;
 				}
-				else 
-					
+				
+				if(c.getBlue() <= 130)
+				{
+					blue = 0;
+				}
+				else
+				{
+					blue = 255;
+				}
+				
+				Color afterFilterColor = new Color(red,green,blue);
+				int newRGB = afterFilterColor.getRGB();
+				afterFilter.setRGB(i, j, newRGB);
+
+
+				
 			}
 			System.out.println("");
+		}
+		try {
+		    // retrieve image
+		    File outputfile = new File("C://Users//Tom//Desktop//saved.png");
+		    ImageIO.write(afterFilter, "png", outputfile);
+		} catch (IOException e) {
+		   
 		}
 	}
 	
