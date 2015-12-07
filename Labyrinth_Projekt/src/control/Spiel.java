@@ -14,6 +14,9 @@ public class Spiel
 	public static void main(String[] args) 
 	{
 		// TODO: Spiel starten
+		ImageLoader load = new ImageLoader();
+		load.loadImage();
+		load.analyzeImage();
 	}
 	
 	public Spiel()
