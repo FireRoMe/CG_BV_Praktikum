@@ -11,3 +11,4 @@ Labyrinth_Projekt/.classpath
 Labyrinth_Projekt/bin/
 Labyrinth_Projekt/.settings/org.eclipse.jdt.core.prefs
 >>>>>>> origin/master
+*.log
