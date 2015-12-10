@@ -1,5 +1,5 @@
 /*
- * Das Fenster beinhält das GUI.
+ * Das Fenster beinhaltet das GUI.
  * @author
  * @version 0.1
  */

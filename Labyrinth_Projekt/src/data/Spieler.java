@@ -1,5 +1,5 @@
 /*
- * Die Spieler Klasse beinhält Informationen über den Spieler.
+ * Die Spieler Klasse beinhaltet Informationen über den Spieler.
  * @author
  * @version 0.1
  */

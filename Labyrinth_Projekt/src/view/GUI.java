@@ -1,5 +1,5 @@
 /*
- * Die GUI Klasse handelt die graphische Anzeige.
+ * Die GUI Klasse beinhaltet die graphische Anzeige.
  * @author
  * @version 0.1
  */
