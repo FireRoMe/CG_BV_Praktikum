@@ -8,6 +8,7 @@ package data;
 
 public class Item
 {
+	private String name;
 	private int ID;
 	private int score;
 	
