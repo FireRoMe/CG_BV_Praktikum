@@ -8,4 +8,9 @@ package data;
 
 public class Kelch extends Item {
 
+	public Kelch(int id) {
+		super(id);
+		// TODO Auto-generated constructor stub
+	}
+
 }

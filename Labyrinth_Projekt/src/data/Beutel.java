@@ -8,4 +8,9 @@ package data;
 
 public class Beutel extends Item {
 
+	public Beutel(int id) {
+		super(id);
+		// TODO Auto-generated constructor stub
+	}
+
 }

@@ -6,4 +6,9 @@ package data;
 
 public class Farbtopf extends Item{
 
+	public Farbtopf(int id) {
+		super(id);
+		// TODO Auto-generated constructor stub
+	}
+
 }

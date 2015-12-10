@@ -8,4 +8,9 @@ package data;
 
 public class Krone extends Item {
 
+	public Krone(int id) {
+		super(id);
+		// TODO Auto-generated constructor stub
+	}
+
 }

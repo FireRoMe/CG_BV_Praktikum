@@ -6,4 +6,9 @@ package data;
 
 public class Kompass extends Item {
 
+	public Kompass(int id) {
+		super(id);
+		// TODO Auto-generated constructor stub
+	}
+
 }
