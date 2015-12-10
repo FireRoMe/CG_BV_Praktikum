@@ -29,7 +29,7 @@ public class ImageLoader
 	{
 		try 
 		{
-		    b = ImageIO.read(new File("C:\\Users\\Tom\\Desktop\\HottesBeispiel.jpg"));
+		    b = ImageIO.read(new File("C:\\Users\\Tom\\Desktop\\DSC_0006.jpg"));
 		    System.out.println("Bild geladen");
 		} catch (IOException e) {
 			System.out.println("Fehler");
@@ -68,7 +68,7 @@ public class ImageLoader
 					green = 255;
 				}
 				
-				if(c.getBlue() <= 130)
+				if(c.getBlue() <= 80)
 				{
 					blue = 0;
 				}
