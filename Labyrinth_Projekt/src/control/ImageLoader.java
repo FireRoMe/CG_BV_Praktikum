@@ -31,6 +31,8 @@ public class ImageLoader
 		{
 		    b = ImageIO.read(new File("C:\\Users\\Tom\\Desktop\\DSC_0006.jpg"));
 		    System.out.println("Bild geladen");
+		    System.out.println(b.getHeight());
+		    System.out.println(b.getWidth());
 		} catch (IOException e) {
 			System.out.println("Fehler");
 			}
@@ -39,10 +41,12 @@ public class ImageLoader
 	public void filter()
 	{
 		afterFilter = new BufferedImage(b.getWidth(), b.getHeight(),BufferedImage.TYPE_INT_RGB);
-		for(int i=0; i < b.getHeight(); i++)
+		for(int i=0; i < b.getWidth(); i++)
 		{
-			for(int j=0; j < b.getWidth(); j++)
+			//System.out.println(i);
+			for(int j=0; j < b.getHeight(); j++)
 			{
+				//System.out.print(j);
 				int currentRGB = b.getRGB(i, j);
 				Color c = new Color(currentRGB);
 				
@@ -79,10 +83,7 @@ public class ImageLoader
 				
 				Color afterFilterColor = new Color(red,green,blue);
 				int newRGB = afterFilterColor.getRGB();
-				afterFilter.setRGB(i, j, newRGB);
-
-
-				
+				afterFilter.setRGB(i, j, newRGB);				
 			}
 			System.out.println("");
 		}
@@ -95,46 +96,61 @@ public class ImageLoader
 		}
 	}
 	
+	int[][] checkMatrix;
 	
 	public void analyzeImage()
 	{
-		//TODO: Bild analysieren und Daten speichern
-		for(int i=0; i < b.getHeight(); i++)
+		checkMatrix = new int[afterFilter.getWidth()][afterFilter.getHeight()];
+		
+		for(int i=0; i < afterFilter.getWidth(); i++)
 		{
-			for(int j=0; j < b.getWidth(); j++)
+			for(int j=0; j < afterFilter.getHeight(); j++)
 			{
-				int currentRGB = b.getRGB(i, j);
-				Color c = new Color(currentRGB); 
-				if(isWhite(c))
+				checkMatrix[i][j] = 0;
+			}
+		}
+		
+		for(int i=0; i < afterFilter.getWidth(); i++)
+		{
+			for(int j=0; j < afterFilter.getHeight(); j++)
+			{
+				if (checkMatrix[i][j] == 0)
 				{
-					System.out.print("W");
-				}
-				else if (isBlack(c))
-				{
-					System.out.print("S");
+					visit(i,j);
 				}
 			}
-			System.out.println("");
 		}
 	}
-
-	public 
 	
-	
-	public boolean isWhite(Color c)
+	public void visit(int i, int j)
 	{
-		boolean b = false;
-		if(c.getBlue() >= 200 && c.getGreen() >= 200 && c.getRed() >= 200)
+		checkMatrix[i][j] = 1;
+		
+		if (isBlack(i,j))
 		{
-			b = true;
+		
+			try
+			{
+				if(checkMatrix[i][j+1] == 0)
+				{
+					visit(i, j+1);
+				}
+			}
+			catch (ArrayIndexOutOfBoundsException e)
+			{
+				
+			}
 		}
-		return b;
+		
+		
 	}
 	
-	public boolean isBlack(Color c)
+	public boolean isBlack(int i, int j)
 	{
+		int x = afterFilter.getRGB(i, j);
+		Color c = new Color(x);
 		boolean b = false;
-		if(c.getBlue() <= 50 && c.getGreen() <= 50 && c.getRed() <= 50)
+		if(c.getBlue() <= 20 && c.getGreen() <= 20 && c.getRed() <= 20)
 		{
 			b = true;
 		}
