@@ -156,4 +156,37 @@ public class ImageLoader
 		}
 		return b;
 	}
+	public boolean isBlue(int i, int j)
+	{
+		int x = afterFilter.getRGB(i, j);
+		Color c = new Color(x);
+		boolean b = false;
+		if(c.getBlue() >= 245 && c.getGreen() <= 20 && c.getRed() <= 20)
+		{
+			b = true;
+		}
+		return b;
+	}
+	public boolean isGreen(int i, int j)
+	{
+		int x = afterFilter.getRGB(i, j);
+		Color c = new Color(x);
+		boolean b = false;
+		if(c.getBlue() <= 20 && c.getGreen() >= 245 && c.getRed() <= 20)
+		{
+			b = true;
+		}
+		return b;
+	}
+	public boolean isRed(int i, int j)
+	{
+		int x = afterFilter.getRGB(i, j);
+		Color c = new Color(x);
+		boolean b = false;
+		if(c.getBlue() <= 20 && c.getGreen() <= 20 && c.getRed() >= 245)
+		{
+			b = true;
+		}
+		return b;
+	}
 }
