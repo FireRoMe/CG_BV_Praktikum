@@ -8,12 +8,19 @@ package data;
 
 public class Item
 {
-	private String name;
-	private int ID;
+
+
+ int id;
 	private int score;
 	
-	public Item()
+	public Item(int id)
 	{
+		this.id = id;
 		
+		
+	}
+	
+	public int getId(){
+		return id;
 	}
 }
