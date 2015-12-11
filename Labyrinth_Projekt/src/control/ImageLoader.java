@@ -29,7 +29,11 @@ public class ImageLoader
 	{
 		try 
 		{
+<<<<<<< HEAD
 		    b = ImageIO.read(new File("C:\\Users\\Tom\\Desktop\\HottesBeispiel.jpg"));
+=======
+		    b = ImageIO.read(new File("C:\\Users\\lara\\Desktop\\bild.jpg"));
+>>>>>>> 6385614977be3fe73cdf8346af7e0e0f48d70eb7
 		    System.out.println("Bild geladen");
 		    System.out.println(b.getHeight());
 		    System.out.println(b.getWidth());
@@ -91,18 +95,19 @@ public class ImageLoader
 		}
 		try {
 		    // retrieve image
-		    File outputfile = new File("C://Users//Tom//Desktop//saved.png");
+		    File outputfile = new File("C://Users//lara//Desktop//saved.png");
 		    ImageIO.write(afterFilter, "png", outputfile);
 		} catch (IOException e) {
 		   
 		}
+
 	}
 	
 	int[][] checkMatrix;
 	
 	public void analyzeImage()
 	{
-		checkMatrix = new int[afterFilter.getWidth()][afterFilter.getHeight()];
+	/*	checkMatrix = new int[afterFilter.getWidth()][afterFilter.getHeight()];
 		
 		for(int i=0; i < afterFilter.getWidth(); i++)
 		{
@@ -144,8 +149,8 @@ public class ImageLoader
 			}
 		}
 		
-		
-	}
+			*/
+		}
 	
 	public boolean isBlack(int i, int j)
 	{

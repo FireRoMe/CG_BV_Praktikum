@@ -7,6 +7,7 @@
 package data;
 
 public class Kelch extends Item {
+
 	public Kelch(int id){
 		this.id=id;
 	}

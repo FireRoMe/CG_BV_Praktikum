@@ -8,4 +8,8 @@ package data;
 
 public class Beutel extends Item {
 
+	public Beutel(int id) {
+		this.id=id;
+	}
+
 }
