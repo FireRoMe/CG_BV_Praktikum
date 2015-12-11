@@ -15,13 +15,16 @@ public class Spiel
 	public static void main(String[] args) 
 	{
 		// TODO: Spiel starten
-		Fenster Labyrinth = new Fenster();
+		GUI g = new GUI();
+		Spiel s = new Spiel(g);
+		
+		
 		ImageLoader load = new ImageLoader();
 		load.loadImage();
 		load.filter();
 	}
 	
-	public Spiel()
+	public Spiel(GUI g)
 	{
 		//TODO: Konstruktor
 	}

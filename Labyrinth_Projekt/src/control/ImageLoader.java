@@ -9,16 +9,16 @@ import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 
 import javax.imageio.ImageIO;
-
-import data.*;
 
 public class ImageLoader
 {
 	private BufferedImage b;
 	private BufferedImage afterFilter;
+	
+	private int imageHeight;
+	private int imageWidth;
 	
 	public ImageLoader()
 	{
@@ -29,10 +29,12 @@ public class ImageLoader
 	{
 		try 
 		{
-		    b = ImageIO.read(new File("C:\\Users\\Tom\\Desktop\\DSC_0006.jpg"));
+		    b = ImageIO.read(new File("C:\\Users\\Tom\\Desktop\\HottesBeispiel.jpg"));
 		    System.out.println("Bild geladen");
 		    System.out.println(b.getHeight());
 		    System.out.println(b.getWidth());
+		    setImageHeight(b.getHeight());
+		    setImageWidth(b.getWidth());
 		} catch (IOException e) {
 			System.out.println("Fehler");
 			}
@@ -188,5 +190,25 @@ public class ImageLoader
 			b = true;
 		}
 		return b;
+	}
+
+	public int getImageHeight()
+	{
+		return imageHeight;
+	}
+
+	public void setImageHeight(int imageHeight)
+	{
+		this.imageHeight = imageHeight;
+	}
+
+	public int getImageWidth()
+	{
+		return imageWidth;
+	}
+
+	public void setImageWidth(int imageWidth)
+	{
+		this.imageWidth = imageWidth;
 	}
 }
