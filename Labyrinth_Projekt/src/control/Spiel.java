@@ -5,6 +5,7 @@
  */
 package control;
 import data.*;
+import view.*;
 
 public class Spiel 
 {
@@ -14,6 +15,7 @@ public class Spiel
 	public static void main(String[] args) 
 	{
 		// TODO: Spiel starten
+		Fenster Labyrinth = new Fenster();
 		ImageLoader load = new ImageLoader();
 		load.loadImage();
 		load.filter();
