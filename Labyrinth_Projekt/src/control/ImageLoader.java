@@ -100,7 +100,7 @@ public class ImageLoader
 	
 	public void analyzeImage()
 	{
-		checkMatrix = new int[afterFilter.getWidth()][afterFilter.getHeight()];
+	/*	checkMatrix = new int[afterFilter.getWidth()][afterFilter.getHeight()];
 		
 		for(int i=0; i < afterFilter.getWidth(); i++)
 		{
@@ -143,8 +143,8 @@ public class ImageLoader
 		}
 		
 		
-	}
-	
+		}
+		*/
 	public boolean isBlack(int i, int j)
 	{
 		int x = afterFilter.getRGB(i, j);
