@@ -6,18 +6,13 @@
 
 package data;
 
-public class Item
-{
+public abstract class Item{
 
 
  int id;
 	private int score;
 	
-	public Item(int id)
-	{
-		this.id = id;
-		
-	}
+	
 	
 	public int getId(){
 		return id;

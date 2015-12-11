@@ -7,5 +7,7 @@
 package data;
 
 public class Krone extends Item {
-
+	public Krone(int id){
+		this.id=id;
+	}
 }
