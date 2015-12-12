@@ -29,11 +29,9 @@ public class ImageLoader
 	{
 		try 
 		{
-<<<<<<< HEAD
+
 		    b = ImageIO.read(new File("C:\\Users\\Tom\\Desktop\\HottesBeispiel.jpg"));
-=======
-		    b = ImageIO.read(new File("C:\\Users\\lara\\Desktop\\bild.jpg"));
->>>>>>> 6385614977be3fe73cdf8346af7e0e0f48d70eb7
+
 		    System.out.println("Bild geladen");
 		    System.out.println(b.getHeight());
 		    System.out.println(b.getWidth());
