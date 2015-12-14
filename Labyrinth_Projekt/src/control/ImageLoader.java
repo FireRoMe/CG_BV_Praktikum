@@ -24,6 +24,7 @@ public class ImageLoader
 	{
 		//TODO: Konstruktor
 		loadImage();
+		filter();
 	}
 	
 	public void loadImage()
@@ -45,7 +46,7 @@ public class ImageLoader
 	}
 	
 	public BufferedImage getImage(){
-		return b;
+		return afterFilter;
 	}
 	public void filter()
 	{

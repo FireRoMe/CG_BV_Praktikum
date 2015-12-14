@@ -21,7 +21,6 @@ public class Wand
 	
 	public Wand(BufferedImage img){
 		this.img=img;
-		System.out.println(img.getWidth()+"???");
 		findeKoordinaten();
 	}
 	
@@ -44,11 +43,10 @@ public class Wand
 		{
 			for (int y=1; y < img.getHeight(); y++)
 			{
-				if ((img.getRGB(x,y) & 0x00FFFFFF)==schwarz)
+				if (img.getRGB(x,y)==schwarz)
 					punkte.add(new Point(x,y));
-					System.out.println(punkte);
-					System.out.println(x);
 			}
 		}
+		System.out.print(punkte);
 	}
 }
