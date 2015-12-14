@@ -12,6 +12,7 @@ public class Wand
 {
 	//private ArrayList<int[]> koordinaten = new ArrayList<int[]>();  Was ist das? So funktionieren ArrayLists nicht
 	
+	private ArrayList<Point> kanten = new ArrayList<Point>();
 	private ArrayList<Point> punkte = new ArrayList<Point>();
 	int schwarz = 0xFF000000;
 	
@@ -44,9 +45,33 @@ public class Wand
 			for (int y=1; y < img.getHeight(); y++)
 			{
 				if (img.getRGB(x,y)==schwarz)
-					punkte.add(new Point(x,y));
+				{	
+					int xLinks=x-1;
+					int xRechts=x+1;
+					int yOben=y-1;
+					int yUnten=y+1;
+					//System.out.println(xLinks);
+					
+					if ((img.getRGB(xLinks,y)==schwarz ^ img.getRGB(xRechts,y)==schwarz)
+							&& (img.getRGB(x,yOben)==schwarz ^ img.getRGB(x,yUnten)==schwarz))
+					{
+						kanten.add(new Point(x,y));
+					}
+					else if (img.getRGB(xLinks,y)==schwarz ^ img.getRGB(xRechts,y)==schwarz
+							^ img.getRGB(x,yOben)==schwarz ^ img.getRGB(x,yUnten)==schwarz)
+					{
+						kanten.add(new Point(x,y));
+					}
+					else if (img.getRGB(xLinks,y)!=schwarz && img.getRGB(xRechts,y)!=schwarz
+							&& img.getRGB(x,yOben)!=schwarz && img.getRGB(x,yUnten)!=schwarz)
+					{
+						punkte.add(new Point(x,y));
+					}
+
+				}
 			}
 		}
+		System.out.print(kanten);
 		System.out.print(punkte);
 	}
 }
