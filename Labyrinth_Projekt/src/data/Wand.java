@@ -71,7 +71,7 @@ public class Wand
 				}
 			}
 		}
-		System.out.print(kanten);
-		System.out.print(punkte);
+		//System.out.print(kanten);
+		//System.out.print(punkte);
 	}
 }

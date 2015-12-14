@@ -35,7 +35,7 @@ public class ImageLoader
 		try 
 		{
 
-		    b = ImageIO.read(new File("C:\\Users\\lara\\Desktop\\test2.jpg"));
+		    b = ImageIO.read(new File("C:\\Users\\lara\\Desktop\\bild.jpg"));
 
 		    System.out.println("Bild geladen");
 		    System.out.println(b.getHeight());
@@ -111,7 +111,7 @@ public class ImageLoader
  
 	}
 	
-	public void border()
+	public void border() //quelle:https://community.oracle.com/thread/1264581?start=0&tstart=0
 	{
 		rand = new BufferedImage(afterFilter.getWidth()+2, afterFilter.getHeight()+2, BufferedImage.TYPE_INT_RGB);
 		
