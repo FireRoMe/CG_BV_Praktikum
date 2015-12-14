@@ -23,6 +23,7 @@ public class ImageLoader
 	public ImageLoader()
 	{
 		//TODO: Konstruktor
+		loadImage();
 	}
 	
 	public void loadImage()
@@ -30,7 +31,7 @@ public class ImageLoader
 		try 
 		{
 
-		    b = ImageIO.read(new File("C:\\Users\\Tom\\Desktop\\HottesBeispiel.jpg"));
+		    b = ImageIO.read(new File("C:\\Users\\lara\\Desktop\\test.jpg"));
 
 		    System.out.println("Bild geladen");
 		    System.out.println(b.getHeight());
@@ -40,8 +41,12 @@ public class ImageLoader
 		} catch (IOException e) {
 			System.out.println("Fehler");
 			}
+		
 	}
 	
+	public BufferedImage getImage(){
+		return b;
+	}
 	public void filter()
 	{
 		afterFilter = new BufferedImage(b.getWidth(), b.getHeight(),BufferedImage.TYPE_INT_RGB);

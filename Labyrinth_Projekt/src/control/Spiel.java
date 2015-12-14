@@ -4,29 +4,25 @@
  * @version 0.1
  */
 package control;
+import java.awt.image.BufferedImage;
+
 import data.*;
 import view.*;
 
 public class Spiel 
 {
 	private Spieler currentPlayer;
-	private Bild currentImage;
+	private BufferedImage currentImage;
+	ImageLoader imageLoader;
 	
-	public static void main(String[] args) 
-	{
-		// TODO: Spiel starten
-		GUI g = new GUI();
-		Spiel s = new Spiel(g);
-		
-		
-		ImageLoader load = new ImageLoader();
-		load.loadImage();
-		load.filter();
-	}
 	
 	public Spiel(GUI g)
 	{
-		//TODO: Konstruktor
+		//ImageLoader load = new ImageLoader();
+		
+		//load.filter();
+		imageLoader=new ImageLoader();
+		Wand w = new Wand(imageLoader.getImage());
 	}
 	
 	public void texturenLaden()
@@ -41,6 +37,6 @@ public class Spiel
 	
 	public void bildLaden()
 	{
-		currentImage = ImageLoader.loadImage();
+		currentImage = imageLoader.getImage();
 	}
 }
