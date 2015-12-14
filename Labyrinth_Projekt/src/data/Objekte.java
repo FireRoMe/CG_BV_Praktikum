@@ -22,9 +22,41 @@ public class Objekte
 	
 	public Objekte(BufferedImage img){
 		this.img=img;
+		findeRot();
+		findeGruen();
 		findeBlau();
 	}
+	
+	public void findeRot()
+	{
+		for (int x=1; x < img.getWidth(); x++)
+		{
+			for (int y=1; y < img.getHeight(); y++)
+			{
+				if (img.getRGB(x,y)==rot)
+				{	
+						punkteRot.add(new Point(x,y));
+				}
+			}
+		}
+		System.out.println(punkteRot);
+	}
 
+	public void findeGruen()
+	{
+		for (int x=1; x < img.getWidth(); x++)
+		{
+			for (int y=1; y < img.getHeight(); y++)
+			{
+				if (img.getRGB(x,y)==gruen)
+				{	
+						punkteGruen.add(new Point(x,y));
+				}
+			}
+		}
+		System.out.println(punkteGruen);
+	}
+	
 	public void findeBlau()
 	{
 		for (int x=1; x < img.getWidth(); x++)
@@ -37,6 +69,8 @@ public class Objekte
 				}
 			}
 		}
-		System.out.print(punkteBlau);
+		System.out.println(punkteBlau);
 	}
+	
+	
 }
