@@ -79,7 +79,7 @@ public class ObjectLoader extends JFrame
 		// Szene aus Datei einlesen
 		try
 		{
-			loadedScene = obj.load("3DModelle//Beutel.obj");
+			loadedScene = obj.load("C:\\Users\\Lara\\Documents\\GitHub\\Workspace\\CG_BV_Praktikum\\3DModelle\\Beutel.obj");
 		} catch (FileNotFoundException | IncorrectFormatException
 				| ParsingErrorException e)
 		{
