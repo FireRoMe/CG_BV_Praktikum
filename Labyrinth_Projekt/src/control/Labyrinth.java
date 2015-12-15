@@ -1,5 +1,6 @@
 package control;
 
+import data.ObjectLoader;
 import view.GUI;
 
 public class Labyrinth {
@@ -8,6 +9,7 @@ public class Labyrinth {
 		// TODO Auto-generated method stub
 		GUI gui=new GUI();
 		Spiel spiel=new Spiel(gui);
+		new ObjectLoader();
 	}
 
 }

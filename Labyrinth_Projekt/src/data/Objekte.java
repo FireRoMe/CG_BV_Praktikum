@@ -9,11 +9,11 @@ public class Objekte
 
 	//ArrayList <Wand> waende = new ArrayList <Wand>();
 	
-	private ArrayList<Point> kanten = new ArrayList<Point>();
-	private ArrayList<Point> punkte = new ArrayList<Point>();
-	private ArrayList<Point> punkteRot = new ArrayList<Point>();
-	private ArrayList<Point> punkteGruen = new ArrayList<Point>();
-	private ArrayList<Point> punkteBlau = new ArrayList<Point>();
+	private static ArrayList<Point> kanten = new ArrayList<Point>();
+	private static ArrayList<Point> punkte = new ArrayList<Point>();
+	private static ArrayList<Point> punkteRot = new ArrayList<Point>();
+	private static ArrayList<Point> punkteGruen = new ArrayList<Point>();
+	private static ArrayList<Point> punkteBlau = new ArrayList<Point>();
 	
 	int schwarz = 0xFF000000;
 	int rot = 0xFFFF0000;
@@ -29,6 +29,7 @@ public class Objekte
 		findeRot();
 		findeGruen();
 		findeBlau();
+		
 	}
 	
 	public void findeSchwarz()
@@ -113,5 +114,29 @@ public class Objekte
 		System.out.println("Blau:" + punkteBlau);
 	}
 	
+	/*Getter für die ArrayLists. Denke die könnten wir irgendwann brauchen...
+	public static ArrayList<Point> getKanten()
+	{
+		return kanten;
+	}
 	
+	public static ArrayList<Point> getPunkte()
+	{
+		return punkte;
+	}
+	
+	public static ArrayList<Point> getPunkteRot()
+	{
+		return punkteRot;
+	}
+	
+	public static ArrayList<Point> getPunkteGruen()
+	{
+		return punkteGruen;
+	}
+	
+	public static ArrayList<Point> getPunkteBlau()
+	{
+		return punkteBlau;
+	}	*/
 }
