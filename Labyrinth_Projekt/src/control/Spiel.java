@@ -22,7 +22,7 @@ public class Spiel
 		
 		//load.filter();
 		imageLoader=new ImageLoader();
-		Wand w = new Wand(imageLoader.getImage());
+		//Wand w = new Wand(imageLoader.getImage());
 		Objekte o = new Objekte(imageLoader.getImage());
 	}
 	
