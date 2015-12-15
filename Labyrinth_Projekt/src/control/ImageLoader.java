@@ -6,6 +6,7 @@
 
 package control;
 import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -16,6 +17,7 @@ public class ImageLoader
 {
 	private BufferedImage b;
 	private BufferedImage afterFilter;
+	private BufferedImage rand;
 	
 	private int imageHeight;
 	private int imageWidth;
@@ -25,6 +27,7 @@ public class ImageLoader
 		//TODO: Konstruktor
 		loadImage();
 		filter();
+		border();
 	}
 	
 	public void loadImage()
@@ -32,7 +35,11 @@ public class ImageLoader
 		try 
 		{
 
+<<<<<<< HEAD
 		    b = ImageIO.read(new File("C:\\Users\\Tom\\Desktop\\HottesBeispiel.jpg"));
+=======
+		    b = ImageIO.read(new File("C:\\Users\\lara\\Desktop\\bild.jpg"));
+>>>>>>> 0941df79b50098e01097775c4b399f50a4633b76
 
 		    System.out.println("Bild geladen");
 		    System.out.println(b.getHeight());
@@ -46,10 +53,11 @@ public class ImageLoader
 	}
 	
 	public BufferedImage getImage(){
-		return afterFilter;
+		return rand;
 	}
 	public void filter()
 	{
+
 		afterFilter = new BufferedImage(b.getWidth(), b.getHeight(),BufferedImage.TYPE_INT_RGB);
 		for(int i=0; i < b.getWidth(); i++)
 		{
@@ -95,7 +103,7 @@ public class ImageLoader
 				int newRGB = afterFilterColor.getRGB();
 				afterFilter.setRGB(i, j, newRGB);				
 			}
-			System.out.println("");
+			//System.out.println("");
 		}
 		try {
 		    // retrieve image
@@ -104,7 +112,25 @@ public class ImageLoader
 		} catch (IOException e) {
 		   
 		}
-
+ 
+	}
+	
+	public void border() //quelle:https://community.oracle.com/thread/1264581?start=0&tstart=0
+	{
+		rand = new BufferedImage(afterFilter.getWidth()+2, afterFilter.getHeight()+2, BufferedImage.TYPE_INT_RGB);
+		
+		Graphics g = rand.getGraphics();
+		g.setColor(Color.white);
+		g.fillRect(0,0,rand.getWidth(),rand.getHeight());
+		
+		g.drawImage(afterFilter,1,1,null);
+		
+		try {
+		    File outputfile = new File("C://Users//lara//Desktop//saved2.png");
+		    ImageIO.write(rand, "png", outputfile);
+		} catch (IOException e) {
+		   
+		}
 	}
 	
 	int[][] checkMatrix;
