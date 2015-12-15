@@ -32,7 +32,7 @@ public class ImageLoader
 		try 
 		{
 
-		    b = ImageIO.read(new File("C:\\Users\\lara\\Desktop\\test.jpg"));
+		    b = ImageIO.read(new File("C:\\Users\\Tom\\Desktop\\HottesBeispiel.jpg"));
 
 		    System.out.println("Bild geladen");
 		    System.out.println(b.getHeight());
