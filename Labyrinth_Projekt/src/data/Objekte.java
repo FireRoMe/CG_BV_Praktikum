@@ -26,20 +26,19 @@ public class Objekte
 	int blau = 0xFF0000FF;
 	
 	private BufferedImage img;
-	Point point;
+	private Point point;
+	private static Point playerStart;
+	private static Point gameStop;
 	
 	public Objekte(BufferedImage img){
 		this.img=img;
-		findeSchwarz();
-		findeRot();
-		findeGruen();
-		findeBlau();
-		medianRot();
-		medianGruen();
+		findePunkte();
+	//medianRot();
+	//	medianGruen();
 	}
 	
 //sucht nach schwarzen Kantenpunkten in dem Bild
-	public void findeSchwarz()
+	public void findePunkte()
 	{
 		for (int x=1; x < img.getWidth(); x++)
 		{
@@ -47,6 +46,9 @@ public class Objekte
 			{
 				if (img.getRGB(x,y)==schwarz)
 				{	
+					punkte.add(new Point(x,y));
+					/*
+					 * 
 					int xLinks=x-1;
 					int xRechts=x+1;
 					int yOben=y-1;
@@ -68,60 +70,27 @@ public class Objekte
 					{
 						punkte.add(new Point(x,y));
 					}
+					*/
+
+				}
+				else if (img.getRGB(x,y)==blau)
+				{	
+					punkteBlau.add(new Point(x,y));
+				}
+				else if (img.getRGB(x,y)==gruen)
+				{	
+					punkteGruen.add(new Point(x,y));
+				}
+				else if (img.getRGB(x,y)==rot)
+				{	
+					punkteRot.add(new Point(x,y));
+					playerStart = punkteRot.get(0);		
 
 				}
 			}
 		}
-		System.out.println("kanten:" + kanten);
-		System.out.println("punkte:" + punkte);
-	}
-	
-//sucht nach roten Punkten und fügt diese einer Arraylist hinzu
-	public void findeRot()
-	{
-		for (int x=1; x < img.getWidth(); x++)
-		{
-			for (int y=1; y < img.getHeight(); y++)
-			{
-				if (img.getRGB(x,y)==rot)
-				{	
-						punkteRot.add(new Point(x,y));
-				}
-			}
-		}
-		System.out.println("Rot:" + punkteRot);
-	}
-
-//sucht nach grünen Punkten und fügt diese einer Arraylist hinzu
-	public void findeGruen()
-	{
-		for (int x=1; x < img.getWidth(); x++)
-		{
-			for (int y=1; y < img.getHeight(); y++)
-			{
-				if (img.getRGB(x,y)==gruen)
-				{	
-						punkteGruen.add(new Point(x,y));
-				}
-			}
-		}
-		System.out.println("Grün:" + punkteGruen);
-	}
-	
-//sucht nach blauen Punkten und fügt diese einer Arraylist hinzu
-	public void findeBlau()
-	{
-		for (int x=1; x < img.getWidth(); x++)
-		{
-			for (int y=1; y < img.getHeight(); y++)
-			{
-				if (img.getRGB(x,y)==blau)
-				{	
-						punkteBlau.add(new Point(x,y));
-				}
-			}
-		}
-		System.out.println("Blau:" + punkteBlau);
+		//System.out.println("kanten:" + kanten);
+		//System.out.println("punkte:" + punkte);
 	}
 	
 	//Median-Methoden für punkteRot und punkteGruen um nur 1 grünen/roten Punkt zu bekommen und somit den Start-/Zielpunkt setzen zu können
@@ -129,15 +98,18 @@ public class Objekte
 	{
 		int laengeRot = punkteRot.size();
 		int indexRot = laengeRot/2;
-		System.out.println(punkteRot.get(indexRot));
+		playerStart = punkteRot.get(indexRot);		
+		//System.out.println(punkteRot.get(indexRot));
 	}
+
 	public static void medianGruen()
 	{
 		int laengeGruen = punkteGruen.size();
 		int indexGruen = laengeGruen/2;
-		System.out.println(punkteGruen.get(indexGruen));
+		gameStop = punkteGruen.get(indexGruen);
+		//System.out.println(punkteGruen.get(indexGruen));
 	}
-	/*Getter für die ArrayLists. Denke die könnten wir irgendwann brauchen...
+	//Getter für die ArrayLists. Denke die könnten wir irgendwann brauchen...
 	public static ArrayList<Point> getKanten()
 	{
 		return kanten;
@@ -161,5 +133,15 @@ public class Objekte
 	public static ArrayList<Point> getPunkteBlau()
 	{
 		return punkteBlau;
-	}	*/
+	}
+
+	public static Point getPlayerStart()
+	{
+		return playerStart;
+	}
+	
+	public static Point getGameStop()
+	{
+		return gameStop;
+	}
 }
