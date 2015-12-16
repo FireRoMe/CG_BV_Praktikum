@@ -113,7 +113,7 @@ public class GUI extends JFrame
 	{
 		//textures
 		
-		TextureLoader loader = new TextureLoader("C:\\Users\\Tom\\eclipse\\CGBV_LAB\\Labyrinth_Projekt\\src\\view\\testtext.jpg", "RGB", new Container());
+		TextureLoader loader = new TextureLoader("src\\view\\testtext.jpg", "RGB", new Container());
 		Texture wallTex = loader.getTexture();
 		
 		wallTex.setBoundaryModeS(Texture.WRAP);
