@@ -5,9 +5,12 @@
  */
 package data;
 
+import java.awt.Color;
 import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class Objekte 
 {
@@ -34,8 +37,8 @@ public class Objekte
 		findeRot();
 		findeGruen();
 		findeBlau();
-		medianRot();
-		medianGruen();
+		//medianRot();
+		//medianGruen();
 	}
 	
 //sucht nach schwarzen Kantenpunkten in dem Bild
@@ -137,7 +140,7 @@ public class Objekte
 		int indexGruen = laengeGruen/2;
 		System.out.println(punkteGruen.get(indexGruen));
 	}
-	/*Getter für die ArrayLists. Denke die könnten wir irgendwann brauchen...
+	//Getter für die ArrayLists. Denke die könnten wir irgendwann brauchen...
 	public static ArrayList<Point> getKanten()
 	{
 		return kanten;
@@ -161,5 +164,5 @@ public class Objekte
 	public static ArrayList<Point> getPunkteBlau()
 	{
 		return punkteBlau;
-	}	*/
+	}	
 }
