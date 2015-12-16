@@ -1,3 +1,8 @@
+/*
+ * Die Objekte Klasse ermittelt Koordinaten aus der Bilddatei. Diese werden unter bestimmten Kriterien verschiedenen ArrayLists zugeordnet.
+ * @author: Lara Sievers
+ * @version 0.9
+ */
 package data;
 
 import java.awt.Point;
@@ -29,7 +34,8 @@ public class Objekte
 		findeRot();
 		findeGruen();
 		findeBlau();
-		
+		medianRot();
+		medianGruen();
 	}
 	
 	public void findeSchwarz()
@@ -114,6 +120,19 @@ public class Objekte
 		System.out.println("Blau:" + punkteBlau);
 	}
 	
+	//Median-Methoden für punkteRot und punkteGruen um nur 1 grünen/roten Punkt zu bekommen und somit den Start-/Zielpunkt setzen zu können
+	public static void medianRot()
+	{
+		int laengeRot = punkteRot.size();
+		int indexRot = laengeRot/2;
+		System.out.println(punkteRot.get(indexRot));
+	}
+	public static void medianGruen()
+	{
+		int laengeGruen = punkteGruen.size();
+		int indexGruen = laengeGruen/2;
+		System.out.println(punkteGruen.get(indexGruen));
+	}
 	/*Getter für die ArrayLists. Denke die könnten wir irgendwann brauchen...
 	public static ArrayList<Point> getKanten()
 	{
