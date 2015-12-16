@@ -1,19 +1,24 @@
 package view;
 
+import data.Objekte;
+
 import java.awt.Container;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
+import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.util.ArrayList;
 
 import javax.media.j3d.AmbientLight;
 import javax.media.j3d.Appearance;
 import javax.media.j3d.BoundingSphere;
 import javax.media.j3d.BranchGroup;
 import javax.media.j3d.Canvas3D;
+import javax.media.j3d.ColoringAttributes;
 import javax.media.j3d.DirectionalLight;
 import javax.media.j3d.GraphicsConfigTemplate3D;
 import javax.media.j3d.Locale;
@@ -37,6 +42,9 @@ import com.sun.j3d.utils.geometry.Box;
 import com.sun.j3d.utils.geometry.Primitive;
 import com.sun.j3d.utils.image.TextureLoader;
 import com.sun.j3d.utils.universe.SimpleUniverse;
+
+import control.ImageLoader;
+import data.Objekte;
 
 @SuppressWarnings("serial")
 public class GUI extends JFrame
@@ -69,6 +77,7 @@ public class GUI extends JFrame
 		
 		lightSetup();
 		objectSetup();
+		planeSetup();
 		
 		viewBG.addChild(keybhv);
 		bG.addChild(viewBG);
@@ -89,7 +98,11 @@ public class GUI extends JFrame
 	private TransformGroup setUpCamera()
 	{	
 		camera = new ViewPlatform();
-		Vector3f camStart = new Vector3f(0.0f,0.0f,2.0f);
+		
+		float startX = (float) Objekte.getPlayerStart().getX() *5;
+		float startY = (float) Objekte.getPlayerStart().getY() *5;
+
+		Vector3f camStart = new Vector3f(startX,0.0f,startY);
 		TransformGroup viewTrans = new TransformGroup();
 	
 		
@@ -109,6 +122,34 @@ public class GUI extends JFrame
 		return viewTrans;
 	}
 
+	private void planeSetup()
+	{
+		Transform3D bodenTrans = new Transform3D();
+		TransformGroup bodenTG = new TransformGroup();
+
+		float planeY = (float) ImageLoader.getImageHeight() *10f;
+		float planeX = (float) ImageLoader.getImageWidth() *10f;
+		
+		Color3f c3f = new Color3f(0.3f, 0.3f, 0.3f);
+		Appearance ap = new Appearance();
+		ColoringAttributes cA = new ColoringAttributes(c3f, ColoringAttributes.NICEST);
+		ap.setColoringAttributes(cA);
+				
+		Box plane = new Box(planeX, 0.0f, planeY, ap);
+		
+		//float planeYPos = planeY/2;
+		//float planeXPos = planeX/2;
+		
+		Vector3f planePos = new Vector3f(0, -5.0f, 0);
+		
+		bodenTrans.setTranslation(planePos);
+	
+		bodenTG.addChild(plane);
+		bodenTG.setTransform(bodenTrans);
+		
+		bG.addChild(bodenTG);
+	}
+
 	private void objectSetup()
 	{
 		//textures
@@ -122,26 +163,41 @@ public class GUI extends JFrame
 		TextureAttributes wallTexAt = new TextureAttributes();
 		wallTexAt.setTextureMode(TextureAttributes.REPLACE);
 		
-		//cube
-		Transform3D cubeTrans = new Transform3D();
-		TransformGroup cubeTG = new TransformGroup();
-
+		//Wände
 		Appearance ap = new Appearance();
 		ap.setTexture(wallTex);
 		ap.setTextureAttributes(wallTexAt);
 		
 		int primflags = Primitive.GENERATE_NORMALS + Primitive.GENERATE_TEXTURE_COORDS;
 		
-		Box cube = new Box(0.5f, 2.5f, 0.5f, primflags, ap);
-		Vector3f cubePos = new Vector3f(0.5f, 0.1f, -0.5f);
+		ArrayList<Point> p = Objekte.getPunkte();
 		
-		cubeTrans.setTranslation(cubePos);
+		float xToZero = (float) ((float) 0-p.get(0).getX()*10);
+		float yToZero = (float) ((float) 0-p.get(0).getY()*10);
 		
-		cubeTG.setTransform(cubeTrans);
-		cubeTG.addChild(cube);
-		
-		bG.addChild(cubeTG);
-		
+		for(int i = 0; i < p.size(); i++)
+		{
+			Transform3D cubeTrans = new Transform3D();
+			TransformGroup cubeTG = new TransformGroup();
+			
+			Point po = p.get(i);
+			float x = (float) po.getX();
+			float y = (float) po.getY();
+			
+			x = x*10;
+			y = y*10;
+			x = x + xToZero;
+			y = y + yToZero;
+			
+			Box cube = new Box(5.0f, 20.0f, 5.0f, primflags, ap);
+			Vector3f cubePos = new Vector3f(x,0.0f,y);
+			
+			cubeTrans.setTranslation(cubePos);
+			
+			cubeTG.setTransform(cubeTrans);
+			cubeTG.addChild(cube);
+			bG.addChild(cubeTG);
+		}
 	}
 	
 	private void lightSetup()

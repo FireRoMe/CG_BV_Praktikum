@@ -19,8 +19,8 @@ public class ImageLoader
 	private BufferedImage afterFilter;
 	private BufferedImage rand;
 	
-	private int imageHeight;
-	private int imageWidth;
+	private static int imageHeight;
+	private static int imageWidth;
 	
 	public ImageLoader()
 	{
@@ -34,7 +34,7 @@ public class ImageLoader
 	{
 		try 
 		{
-			b = ImageIO.read(new File("C:\\Users\\lara\\Desktop\\bild.jpg"));
+			b = ImageIO.read(new File("src//bsp2.jpg"));
 
 		    System.out.println("Bild geladen");
 		    System.out.println(b.getHeight());
@@ -105,7 +105,7 @@ public class ImageLoader
 		}
 		try {
 		    // retrieve image
-		    File outputfile = new File("C://Users//lara//Desktop//saved.png");
+		    File outputfile = new File("src//control//afterFilter.png");
 		    ImageIO.write(afterFilter, "png", outputfile);
 		} catch (IOException e) {
 		   
@@ -125,7 +125,7 @@ public class ImageLoader
 		g.drawImage(afterFilter,1,1,null);
 		
 		try {
-		    File outputfile = new File("C://Users//lara//Desktop//saved2.png");
+		    File outputfile = new File("src//control//test.jpg");
 		    ImageIO.write(rand, "png", outputfile);
 		} catch (IOException e) {
 		   
@@ -228,23 +228,23 @@ public class ImageLoader
 	}
 	
 //getter und setter für Höhe und Breite des Bildes
-	public int getImageHeight()
+	public static int getImageHeight()
 	{
 		return imageHeight;
 	}
 
 	public void setImageHeight(int imageHeight)
 	{
-		this.imageHeight = imageHeight;
+		ImageLoader.imageHeight = imageHeight;
 	}
 
-	public int getImageWidth()
+	public static int getImageWidth()
 	{
 		return imageWidth;
 	}
 
 	public void setImageWidth(int imageWidth)
 	{
-		this.imageWidth = imageWidth;
+		ImageLoader.imageWidth = imageWidth;
 	}
 }
