@@ -24,12 +24,12 @@ public class ImageLoader
 	
 	public ImageLoader()
 	{
-		//TODO: Konstruktor
 		loadImage();
 		filter();
 		border();
 	}
 	
+//Lade ein Bild
 	public void loadImage()
 	{
 		try 
@@ -51,6 +51,8 @@ public class ImageLoader
 	public BufferedImage getImage(){
 		return rand;
 	}
+
+//setzt Farben im eingelesenen Bild auf 'reine' Farbwerte
 	public void filter()
 	{
 
@@ -111,6 +113,7 @@ public class ImageLoader
  
 	}
 	
+//setze einen 1 Pixel großen weißen Rand um das Bild
 	public void border() //quelle:https://community.oracle.com/thread/1264581?start=0&tstart=0
 	{
 		rand = new BufferedImage(afterFilter.getWidth()+2, afterFilter.getHeight()+2, BufferedImage.TYPE_INT_RGB);
@@ -178,6 +181,7 @@ public class ImageLoader
 			*/
 		}
 	
+//Überprüfe die Farben
 	public boolean isBlack(int i, int j)
 	{
 		int x = afterFilter.getRGB(i, j);
@@ -222,7 +226,8 @@ public class ImageLoader
 		}
 		return b;
 	}
-
+	
+//getter und setter für Höhe und Breite des Bildes
 	public int getImageHeight()
 	{
 		return imageHeight;

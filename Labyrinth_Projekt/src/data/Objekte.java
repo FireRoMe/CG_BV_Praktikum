@@ -38,6 +38,7 @@ public class Objekte
 		medianGruen();
 	}
 	
+//sucht nach schwarzen Kantenpunkten in dem Bild
 	public void findeSchwarz()
 	{
 		for (int x=1; x < img.getWidth(); x++)
@@ -75,6 +76,7 @@ public class Objekte
 		System.out.println("punkte:" + punkte);
 	}
 	
+//sucht nach roten Punkten und fügt diese einer Arraylist hinzu
 	public void findeRot()
 	{
 		for (int x=1; x < img.getWidth(); x++)
@@ -90,6 +92,7 @@ public class Objekte
 		System.out.println("Rot:" + punkteRot);
 	}
 
+//sucht nach grünen Punkten und fügt diese einer Arraylist hinzu
 	public void findeGruen()
 	{
 		for (int x=1; x < img.getWidth(); x++)
@@ -105,6 +108,7 @@ public class Objekte
 		System.out.println("Grün:" + punkteGruen);
 	}
 	
+//sucht nach blauen Punkten und fügt diese einer Arraylist hinzu
 	public void findeBlau()
 	{
 		for (int x=1; x < img.getWidth(); x++)
