@@ -1,24 +1,21 @@
 package data;
 
-<<<<<<< HEAD
-import java.util.ArrayList;
-
-public class Objekte {
-=======
 import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
->>>>>>> 0941df79b50098e01097775c4b399f50a4633b76
 
 public class Objekte 
 {
 
 	//ArrayList <Wand> waende = new ArrayList <Wand>();
 	
-	private ArrayList<Point> punkteRot = new ArrayList<Point>();
-	private ArrayList<Point> punkteGruen = new ArrayList<Point>();
-	private ArrayList<Point> punkteBlau = new ArrayList<Point>();
+	private static ArrayList<Point> kanten = new ArrayList<Point>();
+	private static ArrayList<Point> punkte = new ArrayList<Point>();
+	private static ArrayList<Point> punkteRot = new ArrayList<Point>();
+	private static ArrayList<Point> punkteGruen = new ArrayList<Point>();
+	private static ArrayList<Point> punkteBlau = new ArrayList<Point>();
 	
+	int schwarz = 0xFF000000;
 	int rot = 0xFFFF0000;
 	int gruen = 0xFF00FF00;
 	int blau = 0xFF0000FF;
@@ -28,9 +25,48 @@ public class Objekte
 	
 	public Objekte(BufferedImage img){
 		this.img=img;
+		findeSchwarz();
 		findeRot();
 		findeGruen();
 		findeBlau();
+		
+	}
+	
+	public void findeSchwarz()
+	{
+		for (int x=1; x < img.getWidth(); x++)
+		{
+			for (int y=1; y < img.getHeight(); y++)
+			{
+				if (img.getRGB(x,y)==schwarz)
+				{	
+					int xLinks=x-1;
+					int xRechts=x+1;
+					int yOben=y-1;
+					int yUnten=y+1;
+					//System.out.println(xLinks);
+					
+					if ((img.getRGB(xLinks,y)==schwarz ^ img.getRGB(xRechts,y)==schwarz)
+							&& (img.getRGB(x,yOben)==schwarz ^ img.getRGB(x,yUnten)==schwarz))
+					{
+						kanten.add(new Point(x,y));
+					}
+					else if (img.getRGB(xLinks,y)==schwarz ^ img.getRGB(xRechts,y)==schwarz
+							^ img.getRGB(x,yOben)==schwarz ^ img.getRGB(x,yUnten)==schwarz)
+					{
+						kanten.add(new Point(x,y));
+					}
+					else if (img.getRGB(xLinks,y)!=schwarz && img.getRGB(xRechts,y)!=schwarz
+							&& img.getRGB(x,yOben)!=schwarz && img.getRGB(x,yUnten)!=schwarz)
+					{
+						punkte.add(new Point(x,y));
+					}
+
+				}
+			}
+		}
+		System.out.println("kanten:" + kanten);
+		System.out.println("punkte:" + punkte);
 	}
 	
 	public void findeRot()
@@ -45,7 +81,7 @@ public class Objekte
 				}
 			}
 		}
-		System.out.println(punkteRot);
+		System.out.println("Rot:" + punkteRot);
 	}
 
 	public void findeGruen()
@@ -60,7 +96,7 @@ public class Objekte
 				}
 			}
 		}
-		System.out.println(punkteGruen);
+		System.out.println("Grün:" + punkteGruen);
 	}
 	
 	public void findeBlau()
@@ -75,8 +111,32 @@ public class Objekte
 				}
 			}
 		}
-		System.out.println(punkteBlau);
+		System.out.println("Blau:" + punkteBlau);
 	}
 	
+	/*Getter für die ArrayLists. Denke die könnten wir irgendwann brauchen...
+	public static ArrayList<Point> getKanten()
+	{
+		return kanten;
+	}
 	
+	public static ArrayList<Point> getPunkte()
+	{
+		return punkte;
+	}
+	
+	public static ArrayList<Point> getPunkteRot()
+	{
+		return punkteRot;
+	}
+	
+	public static ArrayList<Point> getPunkteGruen()
+	{
+		return punkteGruen;
+	}
+	
+	public static ArrayList<Point> getPunkteBlau()
+	{
+		return punkteBlau;
+	}	*/
 }

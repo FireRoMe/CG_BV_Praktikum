@@ -34,22 +34,18 @@ public class ImageLoader
 	{
 		try 
 		{
-
-<<<<<<< HEAD
-		    b = ImageIO.read(new File("C:\\Users\\Tom\\Desktop\\HottesBeispiel.jpg"));
-=======
-		    b = ImageIO.read(new File("C:\\Users\\lara\\Desktop\\bild.jpg"));
->>>>>>> 0941df79b50098e01097775c4b399f50a4633b76
+			b = ImageIO.read(new File("C:\\Users\\lara\\Desktop\\bild.jpg"));
 
 		    System.out.println("Bild geladen");
 		    System.out.println(b.getHeight());
 		    System.out.println(b.getWidth());
 		    setImageHeight(b.getHeight());
 		    setImageWidth(b.getWidth());
-		} catch (IOException e) {
+		} 
+		catch (IOException e) 
+		{
 			System.out.println("Fehler");
-			}
-		
+		}	
 	}
 	
 	public BufferedImage getImage(){
