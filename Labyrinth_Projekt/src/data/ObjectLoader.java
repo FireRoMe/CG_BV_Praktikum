@@ -23,11 +23,6 @@ import com.sun.j3d.utils.universe.SimpleUniverse;
 
 public class ObjectLoader
 {
-	public ObjectLoader()
-	{
-	
-	}
-	
 	public static BranchGroup getItem(int ID)
 	{
 		ObjectFile obj = new ObjectFile();

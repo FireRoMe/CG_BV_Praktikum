@@ -6,7 +6,6 @@
 package control;
 
 import data.ImageLoader;
-import data.ObjectLoader;
 
 import data.Objekte;
 import view.GUI;
@@ -16,12 +15,15 @@ public class Labyrinth {
 	/** Startet das Spiel.
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+
+		//Initialisiert den ImageLoader
 		ImageLoader imLoad = new ImageLoader();
+		//Initialisiert die Objekt, die aus dem ImageLoader gelesen werden
 		Objekte o = new Objekte(imLoad.getImage());
+		//Initialisiert das GUI
 		GUI gui = new GUI();
+		//Initialisiert das Spiel und übergibt ihm das GUI
 		Spiel spiel=new Spiel(gui);
-		ObjectLoader ol = new ObjectLoader();
 	}
 
 }

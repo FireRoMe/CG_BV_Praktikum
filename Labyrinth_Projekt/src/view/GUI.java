@@ -194,6 +194,7 @@ public class GUI extends JFrame
 			y = y + yToZero;
 			
 			Box cube = new Box(5.0f, 20.0f, 5.0f, primflags, ap);
+			cube.setCollidable(true);
 			Vector3f cubePos = new Vector3f(x,10.0f,y);
 			
 			cubeTrans.setTranslation(cubePos);
@@ -215,7 +216,7 @@ public class GUI extends JFrame
 			for(int i = 0; i < p.size(); i++)
 			{
 				TransformGroup tg = new TransformGroup();
-				tg.addChild(ObjectLoader.getItem(5));
+				tg.addChild(ObjectLoader.getItem(1));
 				
 				float Y = (float) p.get(i).getY();
 				float X = (float) p.get(i).getX();
