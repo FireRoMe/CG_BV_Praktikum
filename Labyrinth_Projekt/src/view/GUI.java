@@ -37,6 +37,7 @@ import javax.media.j3d.View;
 import javax.media.j3d.ViewPlatform;
 import javax.media.j3d.VirtualUniverse;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
@@ -83,6 +84,7 @@ public class GUI extends JFrame
 			public void actionPerformed(ActionEvent e) 
 			{
 				modusWaehlen();
+				mainPanel.remove(startButton);
 			}	
 		});
 		helpButton.addActionListener (new ActionListener() 
@@ -90,6 +92,7 @@ public class GUI extends JFrame
 			public void actionPerformed(ActionEvent e) 
 			{
 				hilfeAnzeigen();
+				mainPanel.remove(helpButton);
 			}
 		});
 	}
@@ -138,8 +141,13 @@ public class GUI extends JFrame
 	
 	private void hilfeAnzeigen() 
 	{
-		this.getContentPane().removeAll();
-		JTextArea hilfeText = new JTextArea("Das kann auch gerne wer anders schreiben.",10,100);
+		JTextArea hilfeText = new JTextArea(
+				"Bewegen Sie sich durch das Labyrinth mit den Pfeiltasten.\n"
+				+"Laden sie entweder ihr eigenes Labyrinth ein oder spielen sie unseres. \n"
+				+ "Um das Spiel zu verlassen drücken Sie den Exit Knopf. \n"
+				+ "Viel Spaß"
+				,10,50);
+
 		@SuppressWarnings("unused")
 		final int SCROLLBARS_NONE;
 		hilfeText.setEditable(false);
@@ -150,9 +158,9 @@ public class GUI extends JFrame
 	
 	private void modusWaehlen() 
 	{
-		this.getContentPane().removeAll();
 		JButton vorgefertigtesLabyrinth = new JButton("vorgefertigtes Labyrinth");
 		JButton eigenesLabyrinth = new JButton("eigenes Labyrinth");
+		
 		this.getContentPane().add(vorgefertigtesLabyrinth);
 		this.getContentPane().add(eigenesLabyrinth);
 		this.getContentPane().validate();
@@ -164,7 +172,25 @@ public class GUI extends JFrame
 				starteSpiel();
 			}
 		});
-	}		
+		eigenesLabyrinth.addActionListener (new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
+				dateiWaehlen();
+			}
+		});
+	}
+	public void dateiWaehlen()
+	{
+		JFileChooser dateiDialog = new JFileChooser();
+		dateiDialog.setCurrentDirectory(new java.io.File("src"));
+		dateiDialog.setDialogTitle("Bilddatei auswählen");
+		dateiDialog.setFileSelectionMode(JFileChooser.FILES_ONLY);
+		if (dateiDialog.showOpenDialog(getParent()) == JFileChooser.APPROVE_OPTION){
+		
+		}
+		System.out.println(dateiDialog.getSelectedFile().getAbsolutePath());
+	}
 		
 	/**
 	 * Kamera Setup, erstellt eine TransformGroup für die Kamera
