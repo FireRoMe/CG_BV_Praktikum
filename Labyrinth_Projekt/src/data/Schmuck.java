@@ -6,6 +6,8 @@
 
 package data;
 
+	id = 5;
+
 public class Schmuck extends Item{
 
 	public Schmuck(int id){

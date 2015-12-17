@@ -6,6 +6,8 @@
 
 package data;
 
+	id = 4;
+
 public class Schatzkiste extends Item {
 
 	public Schatzkiste(int id){
