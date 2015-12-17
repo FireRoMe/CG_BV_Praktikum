@@ -73,7 +73,7 @@ public class ImageLoader
 	{
 		try 
 		{
-			b = ImageIO.read(new File("src//bsp2.jpg"));
+			b = ImageIO.read(new File("src//bsp.jpg"));
 	
 		    //System.out.println("Bild geladen");
 			//System.out.println(b.getHeight());
