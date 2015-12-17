@@ -39,6 +39,7 @@ import javax.media.j3d.VirtualUniverse;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.vecmath.Color3f;
@@ -61,8 +62,11 @@ public class GUI extends JFrame
 	private Canvas3D cv3d;
 	private ViewPlatform camera;
 	private KeyNavigatorBehavior keybhv;
+	
+	private JButton startButton;
+	private JButton helpButton;
 
-	JPanel mainPanel;
+	private JPanel mainPanel;
 	/**
 	 * Konstruktor, der das Fenster initialisiert und Buttons für "Start" und "Hilfe" bereitstellt.
 	 * Der Button "Start" führt starteSpiel() aus.
@@ -70,9 +74,11 @@ public class GUI extends JFrame
 	public GUI()
 	{		
 		this.setSize(1024, 768);
-		mainPanel = new JPanel(new FlowLayout());
-		JButton startButton = new JButton("Start");
-		JButton helpButton = new JButton("Hilfe");
+		FlowLayout fl = new FlowLayout();
+		mainPanel = new JPanel();
+		mainPanel.setLayout(fl);
+		startButton = new JButton("Start");
+		helpButton = new JButton("Hilfe");
 		
 		mainPanel.add(startButton);
 		mainPanel.add(helpButton);
@@ -84,7 +90,6 @@ public class GUI extends JFrame
 			public void actionPerformed(ActionEvent e) 
 			{
 				modusWaehlen();
-				mainPanel.remove(startButton);
 			}	
 		});
 		helpButton.addActionListener (new ActionListener() 
@@ -92,7 +97,6 @@ public class GUI extends JFrame
 			public void actionPerformed(ActionEvent e) 
 			{
 				hilfeAnzeigen();
-				mainPanel.remove(helpButton);
 			}
 		});
 	}
@@ -100,10 +104,18 @@ public class GUI extends JFrame
 	 * Startet das Spiel durch klicken des "Start" Buttons.
 	 * Erstellt ein Universe und führt Methoden aus, um die 3D Umgebung zu erzeugen.
 	 */
-	private void starteSpiel() 
+	private void starteSpiel(String s) 
 	{
+		/** Initialisiert den ImageLoader, der das Bild einlädt und verarbeitet
+		 */
+		ImageLoader imLoad = new ImageLoader(s);
+		/** Initialisiert die Objekt, die aus dem ImageLoader gelesen werden
+		 */
 		@SuppressWarnings("unused")
-		Spiel s = new Spiel();
+		Objekte o = new Objekte(imLoad.getImage());
+		
+		@SuppressWarnings("unused")
+		Spiel spiel = new Spiel();
 		this.getContentPane().removeAll();
 		vU = new VirtualUniverse();
 		Locale loc = new Locale(vU);
@@ -138,38 +150,36 @@ public class GUI extends JFrame
 		this.getContentPane().add(cv3d);
 		this.getContentPane().validate();
 	}
-	
+	/** Zeigt einen kurzen Hilfedialog an
+	 */
 	private void hilfeAnzeigen() 
 	{
-		JTextArea hilfeText = new JTextArea(
-				"Bewegen Sie sich durch das Labyrinth mit den Pfeiltasten.\n"
+		JFrame f = new JFrame();
+		f.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		JOptionPane.showMessageDialog(f, "Bewegen Sie sich durch das Labyrinth mit den Pfeiltasten.\n"
 				+"Laden sie entweder ihr eigenes Labyrinth ein oder spielen sie unseres. \n"
 				+ "Um das Spiel zu verlassen drücken Sie den Exit Knopf. \n"
-				+ "Viel Spaß"
-				,10,50);
-
-		@SuppressWarnings("unused")
-		final int SCROLLBARS_NONE;
-		hilfeText.setEditable(false);
-		this.getContentPane().add(hilfeText);
-		this.getContentPane().validate();
-		
+				+ "Viel Spaß");
 	}	
 	
+	/** Fragt nach, ob ein eigenes Bild oder das vorgefertigte verwendet werden soll
+	 */
 	private void modusWaehlen() 
 	{
-		JButton vorgefertigtesLabyrinth = new JButton("vorgefertigtes Labyrinth");
-		JButton eigenesLabyrinth = new JButton("eigenes Labyrinth");
+		mainPanel.removeAll();
+
+		JButton vorgefertigtesLabyrinth = new JButton("Vorgefertigtes Labyrinth");
+		JButton eigenesLabyrinth = new JButton("Eigenes Labyrinth");
 		
-		this.getContentPane().add(vorgefertigtesLabyrinth);
-		this.getContentPane().add(eigenesLabyrinth);
-		this.getContentPane().validate();
+		mainPanel.add(vorgefertigtesLabyrinth);
+		mainPanel.add(eigenesLabyrinth);
+		
 		
 		vorgefertigtesLabyrinth.addActionListener (new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
-				starteSpiel();
+				starteSpiel("src//bsp.jpg");
 			}
 		});
 		eigenesLabyrinth.addActionListener (new ActionListener() 
@@ -179,17 +189,21 @@ public class GUI extends JFrame
 				dateiWaehlen();
 			}
 		});
+		mainPanel.validate();
 	}
+	/** Öffnet einen Dialog, in dem man seine Datei wählen kann
+	 */
 	public void dateiWaehlen()
 	{
 		JFileChooser dateiDialog = new JFileChooser();
 		dateiDialog.setCurrentDirectory(new java.io.File("src"));
 		dateiDialog.setDialogTitle("Bilddatei auswählen");
 		dateiDialog.setFileSelectionMode(JFileChooser.FILES_ONLY);
-		if (dateiDialog.showOpenDialog(getParent()) == JFileChooser.APPROVE_OPTION){
-		
+		if (dateiDialog.showOpenDialog(getParent()) == JFileChooser.APPROVE_OPTION)
+		{
+			starteSpiel(dateiDialog.getSelectedFile().getAbsolutePath());
 		}
-		System.out.println(dateiDialog.getSelectedFile().getAbsolutePath());
+		//System.out.println(dateiDialog.getSelectedFile().getAbsolutePath());
 	}
 		
 	/**

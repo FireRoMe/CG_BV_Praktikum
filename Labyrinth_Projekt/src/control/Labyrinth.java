@@ -14,13 +14,6 @@ public class Labyrinth
 	 */
 	public static void main(String[] args) 
 	{
-		/** Initialisiert den ImageLoader, der das Bild einlädt und verarbeitet
-		 */
-		ImageLoader imLoad = new ImageLoader();
-		/** Initialisiert die Objekt, die aus dem ImageLoader gelesen werden
-		 */
-		@SuppressWarnings("unused")
-		Objekte o = new Objekte(imLoad.getImage());
 		/** Initialisiert das GUI
 		 */
 		@SuppressWarnings("unused")

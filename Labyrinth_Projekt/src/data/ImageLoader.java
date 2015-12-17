@@ -19,6 +19,8 @@ public class ImageLoader
 	private BufferedImage afterFilter;
 	/** Das Bild nachdem der Rand drum herum gesetzt wurde. */
 	private BufferedImage rand;
+	/** Pfad des Bildes als String */
+	private String path;
 	
 	/** Bildhoehe. */
 	private static int imageHeight;
@@ -29,10 +31,13 @@ public class ImageLoader
 	 * Nicht mehr enthalten, da nicht mehr benötigt. */
 	//private int[][] checkMatrix;
 	
-	/** Erstellt einen Imageloader und führt die Methoden loadIamge, filter und border aus.
+	/** Erstellt einen Imageloader und führt die Methoden loadImage, filter und border auf ein Bild
+	 * aus dem übergebenen Pfad aus.
 	 */
-	public ImageLoader()
+	public ImageLoader(String s)
 	{
+		path = s;
+		
 		loadImage();
 		filter();
 		border();
@@ -73,7 +78,7 @@ public class ImageLoader
 	{
 		try 
 		{
-			b = ImageIO.read(new File("src//bsp.jpg"));
+			b = ImageIO.read(new File(path));
 	
 		    //System.out.println("Bild geladen");
 			//System.out.println(b.getHeight());
@@ -164,7 +169,7 @@ public class ImageLoader
 		g.drawImage(afterFilter,1,1,null);
 		
 		try {
-		    File outputfile = new File("src//control//test.jpg");
+		    File outputfile = new File("src//control//afterRand.jpg");
 		    ImageIO.write(rand, "png", outputfile);
 		} catch (IOException e) {
 		   e.printStackTrace();
