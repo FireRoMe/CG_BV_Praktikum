@@ -36,9 +36,9 @@ public class Item{
 		
 		for (int i=0; i <= anzahl; i++) //die ArrayList kommt morgen. Soll 1 Punkt aus jeder "Gruppe" von blauen Punkten enthalten
 		{
-			randomID = (int) (Math.random() * 10);
+			randomID = (int) (Math.random() * 6);
 		
-		if (randomID < 5)
+		if (randomID < 2)
 			funktionsItems.add (randomID);
 
 		else 
