@@ -82,7 +82,7 @@ public class GUI extends JFrame
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
-				starteSpiel();
+				modusWaehlen();
 			}	
 		});
 		helpButton.addActionListener (new ActionListener() 
@@ -146,6 +146,24 @@ public class GUI extends JFrame
 		this.getContentPane().add(hilfeText);
 		this.getContentPane().validate();
 		
+	}	
+	
+	private void modusWaehlen() 
+	{
+		this.getContentPane().removeAll();
+		JButton vorgefertigtesLabyrinth = new JButton("vorgefertigtes Labyrinth");
+		JButton eigenesLabyrinth = new JButton("eigenes Labyrinth");
+		this.getContentPane().add(vorgefertigtesLabyrinth);
+		this.getContentPane().add(eigenesLabyrinth);
+		this.getContentPane().validate();
+		
+		vorgefertigtesLabyrinth.addActionListener (new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
+				starteSpiel();
+			}
+		});
 	}		
 		
 	/**
