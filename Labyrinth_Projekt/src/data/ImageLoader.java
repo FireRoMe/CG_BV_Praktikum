@@ -145,14 +145,18 @@ public class ImageLoader
 			}
 			//System.out.println("");
 		}
-		try {
-		    /**Speichert das gefilterte Bild ab
-		     */
+		/*
+		 * try {
+		
+		    Speichert das gefilterte Bild ab
+		    
 		    File outputfile = new File("src//control//afterFilter.png");
 		    ImageIO.write(afterFilter, "png", outputfile);
 		} catch (IOException e) {
 		   e.printStackTrace();
 		}
+		
+		 */
 	}
 	
 	/** Setze einen 1 Pixel grossen weissen Rand um das Bild.
@@ -167,13 +171,14 @@ public class ImageLoader
 		g.fillRect(0,0,rand.getWidth(),rand.getHeight());
 		
 		g.drawImage(afterFilter,1,1,null);
-		
+		/*
 		try {
 		    File outputfile = new File("src//control//afterRand.jpg");
 		    ImageIO.write(rand, "png", outputfile);
 		} catch (IOException e) {
 		   e.printStackTrace();
 		}
+		*/
 	}
 	
 	/** Erst angedacht zum Analysieren des Bildes, ist jedoch durch eine Funktion in Objekte ersetzt worden.

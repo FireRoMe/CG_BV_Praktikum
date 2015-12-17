@@ -4,8 +4,6 @@
  */
 package control;
 
-import data.ImageLoader;
-import data.Objekte;
 import view.GUI;
 
 public class Labyrinth 

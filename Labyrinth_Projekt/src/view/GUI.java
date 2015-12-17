@@ -41,7 +41,6 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
 import javax.vecmath.Color3f;
 import javax.vecmath.Point3d;
 import javax.vecmath.Vector3f;
@@ -83,6 +82,8 @@ public class GUI extends JFrame
 		mainPanel.add(startButton);
 		mainPanel.add(helpButton);
 		this.getContentPane().add(mainPanel);
+		this.setTitle("Labyrinth");
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setVisible(true);
 		
 		startButton.addActionListener (new ActionListener() 
@@ -179,7 +180,7 @@ public class GUI extends JFrame
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
-				starteSpiel("src//bsp.jpg");
+				starteSpiel("src/bsp.jpg");
 			}
 		});
 		eigenesLabyrinth.addActionListener (new ActionListener() 
