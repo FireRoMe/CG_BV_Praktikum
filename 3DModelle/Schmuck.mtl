@@ -12,6 +12,20 @@ Ka 0.00 0.00 0.00
 Tf 0.34 0.91 0.91
 Ni 1.60
 Ks 1.00 0.00 0.00
+newmtl Glass_Dark_Red_FrostedSG2
+illum 4
+Kd 0.14 0.02 0.02
+Ka 0.00 0.00 0.00
+Tf 0.34 0.91 0.91
+Ni 1.60
+Ks 1.00 0.00 0.00
+newmtl Glass_Dark_Red_FrostedSG3
+illum 4
+Kd 0.14 0.02 0.02
+Ka 0.00 0.00 0.00
+Tf 0.34 0.91 0.91
+Ni 1.60
+Ks 1.00 0.00 0.00
 newmtl Stainless_Steel_SatinSG
 illum 4
 Kd 0.08 0.08 0.08
@@ -20,6 +34,27 @@ Tf 1.00 1.00 1.00
 Ni 1.60
 Ks 0.94 0.92 1.00
 newmtl Stainless_Steel_SatinSG1
+illum 4
+Kd 0.08 0.08 0.08
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.60
+Ks 0.94 0.92 1.00
+newmtl Stainless_Steel_SatinSG2
+illum 4
+Kd 0.08 0.08 0.08
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.60
+Ks 0.94 0.92 1.00
+newmtl Stainless_Steel_SatinSG3
+illum 4
+Kd 0.08 0.08 0.08
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.60
+Ks 0.94 0.92 1.00
+newmtl Stainless_Steel_SatinSG4
 illum 4
 Kd 0.08 0.08 0.08
 Ka 0.00 0.00 0.00
