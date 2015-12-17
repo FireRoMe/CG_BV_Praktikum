@@ -15,13 +15,24 @@ import javax.imageio.ImageIO;
 
 public class ImageLoader
 {
+	/** Speichert das erste eingelesene Bild. */
 	private BufferedImage b;
+	/** Das Bild nach der Filterung. */
 	private BufferedImage afterFilter;
+	/** Das Bild nachdem der Rand drum herum gesetzt wurde. */
 	private BufferedImage rand;
 	
+	/** Bildhoehe. */
 	private static int imageHeight;
+	/** Bildbreite. */
 	private static int imageWidth;
 	
+	/** Pruefmatrix.
+	 * Nicht mehr enthalten, da nicht mehr benötigt. */
+	//private int[][] checkMatrix;
+	
+	/** Erstellt einen Imageloader.
+	 */
 	public ImageLoader()
 	{
 		loadImage();
@@ -29,13 +40,42 @@ public class ImageLoader
 		border();
 	}
 	
-//Lade ein Bild
+	/** Getter fuer ein Bild.
+	 * @return Gibt das Bild nach der Filterung mit Rand zurueck.
+	 */
+	public BufferedImage getImage(){
+		return rand;
+	}
+
+	//getter und setter für Höhe und Breite des Bildes
+	public static int getImageHeight()
+	{
+		return imageHeight;
+	}
+
+	public void setImageHeight(int imageHeight)
+	{
+		ImageLoader.imageHeight = imageHeight;
+	}
+
+	public static int getImageWidth()
+	{
+		return imageWidth;
+	}
+
+	public void setImageWidth(int imageWidth)
+	{
+		ImageLoader.imageWidth = imageWidth;
+	}
+
+	/** Lade ein Bild.
+	 */
 	public void loadImage()
 	{
 		try 
 		{
 			b = ImageIO.read(new File("src//bsp2.jpg"));
-
+	
 		    System.out.println("Bild geladen");
 		    System.out.println(b.getHeight());
 		    System.out.println(b.getWidth());
@@ -47,12 +87,9 @@ public class ImageLoader
 			System.out.println("Fehler");
 		}	
 	}
-	
-	public BufferedImage getImage(){
-		return rand;
-	}
 
-//setzt Farben im eingelesenen Bild auf 'reine' Farbwerte
+	/** Setzt Farben im eingelesenen Bild auf 'reine' Farbwerte.
+	 */
 	public void filter()
 	{
 
@@ -113,8 +150,10 @@ public class ImageLoader
  
 	}
 	
-//setze einen 1 Pixel großen weißen Rand um das Bild
-	public void border() //quelle:https://community.oracle.com/thread/1264581?start=0&tstart=0
+	/** Setze einen 1 Pixel grossen weissen Rand um das Bild.
+	 * Quelle: https://community.oracle.com/thread/1264581?start=0&tstart=0
+	 */
+	public void border()
 	{
 		rand = new BufferedImage(afterFilter.getWidth()+2, afterFilter.getHeight()+2, BufferedImage.TYPE_INT_RGB);
 		
@@ -132,8 +171,10 @@ public class ImageLoader
 		}
 	}
 	
-	int[][] checkMatrix;
 	
+	
+	/** Erst angedacht zum Analysieren des Bildes, ist jedoch durch etwas anderes ersetzt worden.
+	 */
 	public void analyzeImage()
 	{
 	/*	checkMatrix = new int[afterFilter.getWidth()][afterFilter.getHeight()];
@@ -181,8 +222,13 @@ public class ImageLoader
 			*/
 		}
 	
-//Überprüfe die Farben
-	public boolean isBlack(int i, int j)
+	/** Ueberprueft die Farben auf schwarz,blau,gruen und rot.
+	 * Wird nicht mehr genutzt.
+	 * @param i Breite des Bildes.
+	 * @param j Hoehe des Bildes.
+	 * @return true wenn das Pixel die gesuchte Farbe hat, sonst false.
+	 */
+	/* private boolean isBlack(int i, int j)
 	{
 		int x = afterFilter.getRGB(i, j);
 		Color c = new Color(x);
@@ -193,7 +239,7 @@ public class ImageLoader
 		}
 		return b;
 	}
-	public boolean isBlue(int i, int j)
+	private boolean isBlue(int i, int j)
 	{
 		int x = afterFilter.getRGB(i, j);
 		Color c = new Color(x);
@@ -204,7 +250,7 @@ public class ImageLoader
 		}
 		return b;
 	}
-	public boolean isGreen(int i, int j)
+	private boolean isGreen(int i, int j)
 	{
 		int x = afterFilter.getRGB(i, j);
 		Color c = new Color(x);
@@ -215,7 +261,7 @@ public class ImageLoader
 		}
 		return b;
 	}
-	public boolean isRed(int i, int j)
+	private boolean isRed(int i, int j)
 	{
 		int x = afterFilter.getRGB(i, j);
 		Color c = new Color(x);
@@ -226,25 +272,5 @@ public class ImageLoader
 		}
 		return b;
 	}
-	
-//getter und setter für Höhe und Breite des Bildes
-	public static int getImageHeight()
-	{
-		return imageHeight;
-	}
-
-	public void setImageHeight(int imageHeight)
-	{
-		ImageLoader.imageHeight = imageHeight;
-	}
-
-	public static int getImageWidth()
-	{
-		return imageWidth;
-	}
-
-	public void setImageWidth(int imageWidth)
-	{
-		ImageLoader.imageWidth = imageWidth;
-	}
+	*/
 }
