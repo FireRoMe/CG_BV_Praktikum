@@ -40,6 +40,7 @@ import javax.media.j3d.VirtualUniverse;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.vecmath.Color3f;
 import javax.vecmath.Point3d;
 import javax.vecmath.Vector3f;
@@ -79,18 +80,25 @@ public class GUI extends JFrame
 		JButton startButton = new JButton("Start");
 		JButton helpButton = new JButton("Hilfe");
 		
-		startButton.addActionListener (new ActionListener() 
-		{
-			@Override
-			public void actionPerformed(ActionEvent e) 
-			{
-				starteSpiel();
-			}		
-		});
 		mainPanel.add(startButton);
 		mainPanel.add(helpButton);
 		this.getContentPane().add(mainPanel);
 		this.setVisible(true);
+		
+		startButton.addActionListener (new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
+				starteSpiel();
+			}	
+		});
+		helpButton.addActionListener (new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
+				hilfeAnzeigen();
+			}
+		});
 	}
 
 	private void starteSpiel() 
@@ -125,6 +133,17 @@ public class GUI extends JFrame
 		this.getContentPane().add(cv3d);
 		this.getContentPane().validate();
 	}
+	
+	private void hilfeAnzeigen() 
+	{
+		this.getContentPane().removeAll();
+		JTextArea hilfeText = new JTextArea("Das kann auch gerne wer anders schreiben.",10,100);
+		final int SCROLLBARS_NONE;
+		hilfeText.setEditable(false);
+		this.getContentPane().add(hilfeText);
+		this.getContentPane().validate();
+		
+	}		
 		
 	private TransformGroup setUpCamera()
 	{	
@@ -185,7 +204,7 @@ public class GUI extends JFrame
 	{
 		//textures
 		
-		TextureLoader loader = new TextureLoader("src\\view\\testtext.jpg", "RGB", new Container());
+		TextureLoader loader = new TextureLoader("src\\view\\Textur.jpg", "RGB", new Container());
 		Texture wallTex = loader.getTexture();
 		
 		wallTex.setBoundaryModeS(Texture.WRAP);
