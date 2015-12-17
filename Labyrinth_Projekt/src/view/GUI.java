@@ -1,6 +1,8 @@
 package view;
 
 import data.Objekte;
+import data.ImageLoader;
+import data.ObjectLoader;
 
 import java.awt.Container;
 import java.awt.GraphicsDevice;
@@ -43,7 +45,7 @@ import com.sun.j3d.utils.geometry.Primitive;
 import com.sun.j3d.utils.image.TextureLoader;
 import com.sun.j3d.utils.universe.SimpleUniverse;
 
-import control.ImageLoader;
+import data.ImageLoader;
 import data.Objekte;
 
 @SuppressWarnings("serial")
@@ -75,9 +77,11 @@ public class GUI extends JFrame
 		viewBG.addChild(setUpCamera());
 		cv3d = createCanvas();
 		
-		lightSetup();
+		
 		objectSetup();
+		itemSetup();
 		planeSetup();
+		lightSetup();
 		
 		viewBG.addChild(keybhv);
 		bG.addChild(viewBG);
@@ -102,7 +106,7 @@ public class GUI extends JFrame
 		float startX = (float) Objekte.getPlayerStart().getX() *5;
 		float startY = (float) Objekte.getPlayerStart().getY() *5;
 
-		Vector3f camStart = new Vector3f(startX,0.0f,startY);
+		Vector3f camStart = new Vector3f(startX,7.5f,startY);
 		TransformGroup viewTrans = new TransformGroup();
 	
 		
@@ -140,7 +144,7 @@ public class GUI extends JFrame
 		//float planeYPos = planeY/2;
 		//float planeXPos = planeX/2;
 		
-		Vector3f planePos = new Vector3f(0, -5.0f, 0);
+		Vector3f planePos = new Vector3f(0, 0, 0);
 		
 		bodenTrans.setTranslation(planePos);
 	
@@ -190,7 +194,7 @@ public class GUI extends JFrame
 			y = y + yToZero;
 			
 			Box cube = new Box(5.0f, 20.0f, 5.0f, primflags, ap);
-			Vector3f cubePos = new Vector3f(x,0.0f,y);
+			Vector3f cubePos = new Vector3f(x,10.0f,y);
 			
 			cubeTrans.setTranslation(cubePos);
 			
@@ -200,9 +204,37 @@ public class GUI extends JFrame
 		}
 	}
 	
+	private void itemSetup()
+	{
+		ArrayList<Point> p = Objekte.getPunkteBlau();
+		System.out.println("Angekommen");
+
+		if (p.size() != 0)
+		{
+			System.out.println("size ist nicht 0");
+			for(int i = 0; i < p.size(); i++)
+			{
+				TransformGroup tg = new TransformGroup();
+				tg.addChild(ObjectLoader.getItem(5));
+				
+				float Y = (float) p.get(i).getY();
+				float X = (float) p.get(i).getX();
+				X = X*5;
+				Y = Y*5;
+				
+				Vector3f itemPos = new Vector3f(X, 0.0f, Y);
+				Transform3D t3d = new Transform3D();
+				t3d.setTranslation(itemPos);
+				tg.setTransform(t3d);
+				
+				bG.addChild(tg);
+			}
+		}
+	}
+	
 	private void lightSetup()
 	{		
-		Color3f lightcolor = new Color3f(1.8f, 1.8f, 0.5f);
+		Color3f lightcolor = new Color3f(1f, 1f, 1f);
 		BoundingSphere bounds = new BoundingSphere(new Point3d(0.0,0.0,0.0), 100.0);
 		Vector3f light1dir = new Vector3f(4.0f, -7.0f, -12.0f);
 		

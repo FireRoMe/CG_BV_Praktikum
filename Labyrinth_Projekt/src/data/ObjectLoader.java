@@ -21,80 +21,83 @@ import com.sun.j3d.loaders.objectfile.ObjectFile;
 import com.sun.j3d.utils.behaviors.vp.OrbitBehavior;
 import com.sun.j3d.utils.universe.SimpleUniverse;
 
-public class ObjectLoader extends JFrame
+public class ObjectLoader
 {
-	private Canvas3D myCanvas;
-	private TransformGroup tgCamera;
-	
 	public ObjectLoader()
 	{
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		myCanvas = new Canvas3D(SimpleUniverse.getPreferredConfiguration());
-		
-		SimpleUniverse universe = new SimpleUniverse(myCanvas);
-		universe.getViewingPlatform().setNominalViewingTransform();
-		
-		createSceneGraph(universe);
-		createLights(universe);
-		
-		OrbitBehavior ob = new OrbitBehavior(myCanvas);
-		ob.setSchedulingBounds(new BoundingSphere(new Point3d(0.0,0.0,0.0), Double.MAX_VALUE));
-		universe.getViewingPlatform().setViewPlatformBehavior(ob);
-		
-		// Kamera bewegen
-		Transform3D tfCamera = new Transform3D();
-		tfCamera.setTranslation(new Vector3f(0.0f, 0.7f, 10.0f));
-		
-		tgCamera = universe.getViewingPlatform().getViewPlatformTransform();
-		tgCamera.setTransform(tfCamera);
-		
-		setTitle("Object Loader Demo");
-		setSize(1280, 720);
-		
-		getContentPane().add("Center", myCanvas);
-		
-		setVisible(true);
+	
 	}
 	
-	private void createLights(SimpleUniverse universe)
-	{
-		BoundingSphere bounds = new BoundingSphere(new Point3d(0.0, 0.0, 0.0), Double.MAX_VALUE);
-		Color3f lightColor = new Color3f(0.7f, 0.7f, 0.7f);
-		Vector3f lightDirection = new Vector3f(0.0f, -0.2f, -0.3f);
-		DirectionalLight dLight = new DirectionalLight(true, lightColor, lightDirection);
-		dLight.setInfluencingBounds(bounds);
-		
-		BranchGroup lights = new BranchGroup();
-		lights.addChild(dLight);
-		
-		universe.addBranchGraph(lights);
-	}
-
-	private void createSceneGraph(SimpleUniverse universe)
+	public static BranchGroup getItem(int ID)
 	{
 		ObjectFile obj = new ObjectFile();
 		Scene loadedScene = null;
-		
-		// Szene aus Datei einlesen
-		try
+		BranchGroup loadedObject;
+		switch(ID)
 		{
-			loadedScene = obj.load("C:\\Users\\Lara\\Documents\\GitHub\\Workspace\\CG_BV_Praktikum\\3DModelle\\Beutel.obj");
-		} catch (FileNotFoundException | IncorrectFormatException
-				| ParsingErrorException e)
-		{
-			e.printStackTrace();
+		case 0:
+			try
+			{
+				loadedScene = obj.load("src\\models\\Teleporter.obj");
+			} catch (FileNotFoundException | IncorrectFormatException
+					| ParsingErrorException e)
+			{
+				e.printStackTrace();
+			}
+			break;
+		case 1:
+			try
+			{
+				loadedScene = obj.load("src\\models\\Kompass.obj");
+			} catch (FileNotFoundException | IncorrectFormatException
+					| ParsingErrorException e)
+			{
+				e.printStackTrace();
+			}
+			break;
+		case 2:
+			try
+			{
+				loadedScene = obj.load("src\\models\\Beutel.obj");
+			} catch (FileNotFoundException | IncorrectFormatException
+					| ParsingErrorException e)
+			{
+				e.printStackTrace();
+			}
+			break;
+		case 3:
+			try
+			{
+				loadedScene = obj.load("src\\models\\Kelch.obj");
+			} catch (FileNotFoundException | IncorrectFormatException
+					| ParsingErrorException e)
+			{
+				e.printStackTrace();
+			}
+			break;
+		case 4:
+			try
+			{
+				loadedScene = obj.load("src\\models\\Schatzkiste.obj");
+			} catch (FileNotFoundException | IncorrectFormatException
+					| ParsingErrorException e)
+			{
+				e.printStackTrace();
+			}
+			break;
+		case 5:
+			try
+			{
+				loadedScene = obj.load("src\\models\\Schmuck.obj");
+			} catch (FileNotFoundException | IncorrectFormatException
+					| ParsingErrorException e)
+			{
+				e.printStackTrace();
+			}
+			break;
 		}
+		loadedObject = loadedScene.getSceneGroup();
 		
-		Background bg = new Background(new Color3f(1.0f,1.0f,1.0f));
-		BoundingSphere bounds = new BoundingSphere(new Point3d(0.0,0.0,0.0), Double.MAX_VALUE);
-		bg.setApplicationBounds(bounds);
-		
-		// Objekt aus geladener Datei auslesen
-		BranchGroup theScene = loadedScene.getSceneGroup();
-		theScene.addChild(bg);
-		
-		universe.addBranchGraph(theScene);
+		return loadedObject;
 	}
-
 }

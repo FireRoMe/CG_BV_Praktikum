@@ -13,7 +13,7 @@ public class Spiel
 {
 	private Spieler currentPlayer;
 	private BufferedImage currentImage;
-	ImageLoader imageLoader;
+	private ImageLoader imageLoader;
 	
 	
 	public Spiel(GUI g)

@@ -4,7 +4,7 @@
  * @version 0.1
  */
 
-package control;
+package data;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;

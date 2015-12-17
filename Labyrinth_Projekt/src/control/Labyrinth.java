@@ -1,5 +1,6 @@
 package control;
 
+import data.ImageLoader;
 import data.ObjectLoader;
 import data.Objekte;
 import view.GUI;
