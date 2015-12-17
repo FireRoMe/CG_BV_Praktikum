@@ -5,7 +5,63 @@ Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
 Ni 1.60
 Ks 0.00 0.17 1.00
+newmtl LED_Yellow_onSG1
+illum 4
+Kd 0.00 0.17 1.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.60
+Ks 0.00 0.17 1.00
+newmtl LED_Yellow_onSG2
+illum 4
+Kd 0.00 0.17 1.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.60
+Ks 0.00 0.17 1.00
+newmtl LED_Yellow_onSG3
+illum 4
+Kd 0.00 0.17 1.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.60
+Ks 0.00 0.17 1.00
+newmtl LED_Yellow_onSG4
+illum 4
+Kd 0.00 0.17 1.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.60
+Ks 0.00 0.17 1.00
 newmtl Plastic_Dark_Gray_Textured_FineSG
+illum 4
+Kd 0.22 0.22 0.22
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.60
+Ks 1.00 1.00 1.00
+newmtl Plastic_Dark_Gray_Textured_FineSG1
+illum 4
+Kd 0.22 0.22 0.22
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.60
+Ks 1.00 1.00 1.00
+newmtl Plastic_Dark_Gray_Textured_FineSG2
+illum 4
+Kd 0.22 0.22 0.22
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.60
+Ks 1.00 1.00 1.00
+newmtl Plastic_Dark_Gray_Textured_FineSG3
+illum 4
+Kd 0.22 0.22 0.22
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.60
+Ks 1.00 1.00 1.00
+newmtl Plastic_Dark_Gray_Textured_FineSG4
 illum 4
 Kd 0.22 0.22 0.22
 Ka 0.00 0.00 0.00
