@@ -6,9 +6,9 @@
 
 package data;
 
-	id = 5;
-
 public class Schmuck extends Item{
+	
+	id = 300;
 
 	public Schmuck(int id){
 		this.id=id;

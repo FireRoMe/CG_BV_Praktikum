@@ -16,13 +16,20 @@ public class Item{
 	private static Set funktionsItems = new HashSet(); // Gedanke dahinter: Wir haben 5 Items die einmalig seinen können und 5 die auch doppelt vorkommen können. Ein HashSet erlaubt keine doppelten einträge. Wenn jemand ne bessere Idee hat darf er sich gerne melden 
 	static ArrayList<Integer> punkteItems = new ArrayList<Integer>(); // hier kommen die Zufallswerte von 5-9 rein, da diese auch doppelt sein können
 
+	int id;
+ 	private int score;
+	
+	
+	public void scoreErhöhen() 
+	{
+		//wenn Item eingesammel (Kollision) 
+		Spieler.punktestandErhöhen(score);
+	}
+	
 	public Item ()
 	{
 		generiereItem();
 	}
-	
-	int id;
- 	private int score;
 	
 	public int getId()
 	{
