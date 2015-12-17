@@ -5,10 +5,9 @@
 package data;
 
 public class Kompass extends Item {
-
-	id = 1;
 	
 	public Kompass(int id){
 		this.id=id;
+		id = 1;
 	}
 }
