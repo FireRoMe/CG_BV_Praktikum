@@ -7,10 +7,10 @@
 package data;
 
 public class Schmuck extends Item{
-	
-	id = 300;
 
 	public Schmuck(int id){
 		this.id=id;
+		id = 5;
+		score = 500;
 	}
 }
