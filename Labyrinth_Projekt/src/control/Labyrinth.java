@@ -5,12 +5,9 @@
  */
 package control;
 
-<<<<<<< HEAD
 import data.ImageLoader;
 import data.ObjectLoader;
-=======
-import control.ObjectLoader;
->>>>>>> 627e5a3cbc75b90149b48e478d13b88287533847
+
 import data.Objekte;
 import view.GUI;
 
