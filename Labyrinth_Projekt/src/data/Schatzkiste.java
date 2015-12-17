@@ -6,9 +6,10 @@
 
 package data;
 
-	id = 4;
-
 public class Schatzkiste extends Item {
+	
+	id = 4;
+	score = 500;
 
 	public Schatzkiste(int id){
 		this.id=id;

@@ -8,13 +8,23 @@ package data;
 public class Spieler
 {
 	private Position currentPosition;
-	private int currentScore;
+	private int aktuellerPunktestand;
 	private Inventar inv;
 	
 	public Spieler(Position p)
 	{
 		currentPosition = p;
-		currentScore = 0;
+		aktuellerPunktestand = 0;
 		inv = new Inventar();
+	}
+	
+	public int getaktuellerPunktestand()
+	{
+		return aktuellerPunktestand;
+	}
+	
+	public static void punktestandErhöhen(int score)
+	{
+		this.aktuellerPunktestand = aktuellerPunktestand + score;
 	}
 }
