@@ -1,7 +1,6 @@
 /**
  * Die ImageLoader Klasse ermöglicht es, Bilder zu laden und zu verarbeiten.
- * @author
- * @version 0.1
+ * @author Jaqueline Timmermann
  */
 package data;
 

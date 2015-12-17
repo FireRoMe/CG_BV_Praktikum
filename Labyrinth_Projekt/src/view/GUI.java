@@ -1,7 +1,6 @@
 /**
  * Die GUI Klasse kontrolliert den Graphischen Output.
  * @author Tom Quinders
- * @version 0.0.8
  */
 
 package view;
@@ -100,6 +99,7 @@ public class GUI extends JFrame
 	 */
 	private void starteSpiel() 
 	{
+		@SuppressWarnings("unused")
 		Spiel s = new Spiel();
 		this.getContentPane().removeAll();
 		vU = new VirtualUniverse();
@@ -140,6 +140,7 @@ public class GUI extends JFrame
 	{
 		this.getContentPane().removeAll();
 		JTextArea hilfeText = new JTextArea("Das kann auch gerne wer anders schreiben.",10,100);
+		@SuppressWarnings("unused")
 		final int SCROLLBARS_NONE;
 		hilfeText.setEditable(false);
 		this.getContentPane().add(hilfeText);
@@ -216,14 +217,10 @@ public class GUI extends JFrame
 	 */
 	private void objectSetup()
 	{
-<<<<<<< HEAD
-		//Lädt die Textur		
-		TextureLoader loader = new TextureLoader("src\\view\\testtext.jpg", "RGB", new Container());
-=======
-		//textures
+
+		//Lädt die Textur	
 		
 		TextureLoader loader = new TextureLoader("src\\view\\Textur.jpg", "RGB", new Container());
->>>>>>> 739436b691ef564d5d43cedbf8034d877cdac057
 		Texture wallTex = loader.getTexture();
 		
 		wallTex.setBoundaryModeS(Texture.WRAP);
@@ -336,5 +333,3 @@ public class GUI extends JFrame
         return canvas;
 	}
 }
-
-

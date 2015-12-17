@@ -1,7 +1,6 @@
 /**
  * Die Objekte Klasse ermittelt Koordinaten aus der Bilddatei. Diese werden unter bestimmten Kriterien verschiedenen ArrayLists zugeordnet.
  * @author: Lara Sievers
- * @version 0.9
  */
 package data;
 

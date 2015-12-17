@@ -1,15 +1,13 @@
 /*
  * Die Spieler Klasse beinhaltet Informationen über den Spieler.
- * @author
- * @version 0.1
+ * @author Tom Quinders
  */
 package data;
 
 public class Spieler
 {
 	private static int aktuellerPunktestand;
-	@SuppressWarnings("unused")
-	private Inventar inv;
+	//private Inventar inv;
 	@SuppressWarnings("unused")
 	private String name;
 	
@@ -22,7 +20,7 @@ public class Spieler
 	{
 		name = string;
 		aktuellerPunktestand = 0;
-		inv = new Inventar();
+		//inv = new Inventar();
 	}
 
 	public int getaktuellerPunktestand()

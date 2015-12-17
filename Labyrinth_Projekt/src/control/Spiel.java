@@ -1,7 +1,6 @@
 /**
  * Die Spiel Klasse Kontrolliert den Ablauf des Spiels.
- * @author
- * @version 0.1
+ * @author Jaqueline Timmermann
  */
 package control;
 import data.*;

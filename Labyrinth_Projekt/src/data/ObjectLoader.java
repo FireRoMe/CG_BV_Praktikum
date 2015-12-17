@@ -2,7 +2,6 @@
  * ObjectLoader wird benutzt, um .obj Dateien für die Items zu laden.
  * 
  *  @author Tom Quinders
- *  @version 1.0.0
  */
 package data;
 

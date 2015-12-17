@@ -1,7 +1,6 @@
 /**
  * Die Labyrinth Klasse enthält die main-Methode
- * @author
- * @version 0.1
+ * @author Tom Quinders
  */
 package control;
 
