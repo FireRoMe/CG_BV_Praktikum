@@ -5,9 +5,12 @@ import data.ImageLoader;
 import data.ObjectLoader;
 
 import java.awt.Container;
+import java.awt.FlowLayout;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.awt.Point;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
@@ -34,7 +37,9 @@ import javax.media.j3d.TransformGroup;
 import javax.media.j3d.View;
 import javax.media.j3d.ViewPlatform;
 import javax.media.j3d.VirtualUniverse;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.vecmath.Color3f;
 import javax.vecmath.Point3d;
 import javax.vecmath.Vector3f;
@@ -65,10 +70,32 @@ public class GUI extends JFrame
 		GUI gui = new GUI();
 	}
 	*/
+	JPanel mainPanel;
+	
 	public GUI()
 	{		
 		this.setSize(1024, 768);
+		mainPanel = new JPanel(new FlowLayout());
+		JButton startButton = new JButton("Start");
+		JButton helpButton = new JButton("Hilfe");
 		
+		startButton.addActionListener (new ActionListener() 
+		{
+			@Override
+			public void actionPerformed(ActionEvent e) 
+			{
+				starteSpiel();
+			}		
+		});
+		mainPanel.add(startButton);
+		mainPanel.add(helpButton);
+		this.getContentPane().add(mainPanel);
+		this.setVisible(true);
+	}
+
+	private void starteSpiel() 
+	{
+		this.getContentPane().removeAll();
 		vU = new VirtualUniverse();
 		Locale loc = new Locale(vU);
 		
@@ -93,12 +120,12 @@ public class GUI extends JFrame
 		view.setPhysicalBody(new PhysicalBody());
 		view.setPhysicalEnvironment(new PhysicalEnvironment());
 		view.addCanvas3D(cv3d);
-		view.attachViewPlatform(camera);	
+		view.attachViewPlatform(camera);
 		
 		this.getContentPane().add(cv3d);
-		this.setVisible(true);
+		this.getContentPane().validate();
 	}
-	
+		
 	private TransformGroup setUpCamera()
 	{	
 		camera = new ViewPlatform();
