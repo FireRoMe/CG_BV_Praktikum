@@ -7,17 +7,24 @@ package data;
 
 public class Spieler
 {
-	private Position currentPosition;
-	private int aktuellerPunktestand;
+	private static int aktuellerPunktestand;
+	@SuppressWarnings("unused")
 	private Inventar inv;
+	@SuppressWarnings("unused")
+	private String name;
 	
-	public Spieler(Position p)
+	public Spieler()
 	{
-		currentPosition = p;
+		
+	}
+	
+	public Spieler(String string)
+	{
+		name = string;
 		aktuellerPunktestand = 0;
 		inv = new Inventar();
 	}
-	
+
 	public int getaktuellerPunktestand()
 	{
 		return aktuellerPunktestand;
@@ -25,6 +32,6 @@ public class Spieler
 	
 	public static void punktestandErhöhen(int score)
 	{
-		this.aktuellerPunktestand = aktuellerPunktestand + score;
+		aktuellerPunktestand = aktuellerPunktestand + score;
 	}
 }

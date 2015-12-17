@@ -1,3 +1,9 @@
+/**
+ * Die GUI Klasse kontrolliert den Graphischen Output.
+ * @author Tom Quinders
+ * @version 0.0.8
+ */
+
 package view;
 
 import data.Objekte;
@@ -11,11 +17,6 @@ import java.awt.GraphicsEnvironment;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 
 import javax.media.j3d.AmbientLight;
@@ -27,7 +28,6 @@ import javax.media.j3d.ColoringAttributes;
 import javax.media.j3d.DirectionalLight;
 import javax.media.j3d.GraphicsConfigTemplate3D;
 import javax.media.j3d.Locale;
-import javax.media.j3d.Node;
 import javax.media.j3d.PhysicalBody;
 import javax.media.j3d.PhysicalEnvironment;
 import javax.media.j3d.Texture;
@@ -48,10 +48,8 @@ import com.sun.j3d.utils.behaviors.keyboard.KeyNavigatorBehavior;
 import com.sun.j3d.utils.geometry.Box;
 import com.sun.j3d.utils.geometry.Primitive;
 import com.sun.j3d.utils.image.TextureLoader;
-import com.sun.j3d.utils.universe.SimpleUniverse;
 
-import data.ImageLoader;
-import data.Objekte;
+import control.Spiel;
 
 @SuppressWarnings("serial")
 public class GUI extends JFrame
@@ -63,15 +61,11 @@ public class GUI extends JFrame
 	private ViewPlatform camera;
 	private KeyNavigatorBehavior keybhv;
 
-	/* Alte Main Methode zum Testen des GUIs
-	public static void main (String[] args)
-	{
-		@SuppressWarnings("unused")
-		GUI gui = new GUI();
-	}
-	*/
 	JPanel mainPanel;
-	
+	/**
+	 * Konstruktor, der das Fenster initialisiert und Buttons für "Start" und "Hilfe" bereitstellt.
+	 * Der Button "Start" führt starteSpiel() aus.
+	 */
 	public GUI()
 	{		
 		this.setSize(1024, 768);
@@ -92,9 +86,13 @@ public class GUI extends JFrame
 		this.getContentPane().add(mainPanel);
 		this.setVisible(true);
 	}
-
+	/**
+	 * Startet das Spiel durch klicken des "Start" Buttons.
+	 * Erstellt ein Universe und führt Methoden aus, um die 3D Umgebung zu erzeugen.
+	 */
 	private void starteSpiel() 
 	{
+		Spiel s = new Spiel();
 		this.getContentPane().removeAll();
 		vU = new VirtualUniverse();
 		Locale loc = new Locale(vU);
@@ -104,63 +102,78 @@ public class GUI extends JFrame
 		viewBG.addChild(setUpCamera());
 		cv3d = createCanvas();
 		
+		//Setups für Objekte in der Szene und Lichter
 		
 		objectSetup();
 		itemSetup();
 		planeSetup();
 		lightSetup();
-		
+
 		viewBG.addChild(keybhv);
 		bG.addChild(viewBG);
-		
 		loc.addBranchGraph(bG);
+
+		//View Setup
 		
 		View view = new View();
-		view.setBackClipDistance(2000.0);
+		view.setBackClipDistance(5000.0);
 		view.setPhysicalBody(new PhysicalBody());
 		view.setPhysicalEnvironment(new PhysicalEnvironment());
 		view.addCanvas3D(cv3d);
 		view.attachViewPlatform(camera);
+
+		//Alles zum Fenster hinzufügen
 		
 		this.getContentPane().add(cv3d);
 		this.getContentPane().validate();
 	}
 		
+	/**
+	 * Kamera Setup, erstellt eine TransformGroup für die Kamera
+	 * @return gibt die TransformGroup für die Kamera zurück
+	 */
 	private TransformGroup setUpCamera()
 	{	
 		camera = new ViewPlatform();
 		
+		//Nimmt die PlayerStartPosition aus der Objekte Klasse, die aus dem Bild extrahiert wurde
+		//und modifiziert sie, um sie für den Kamera Startpunkt zu benutzen
 		float startX = (float) Objekte.getPlayerStart().getX() *5;
 		float startY = (float) Objekte.getPlayerStart().getY() *5;
 
 		Vector3f camStart = new Vector3f(startX,7.5f,startY);
 		TransformGroup viewTrans = new TransformGroup();
-	
 		
+		//erlaubt der Kamera sich zu bewegen
 		viewTrans.setCapability(TransformGroup.ALLOW_TRANSFORM_READ);
 		viewTrans.setCapability(TransformGroup.ALLOW_TRANSFORM_WRITE);
 		viewTrans.setCapability(TransformGroup.ALLOW_LOCAL_TO_VWORLD_READ);
 		
 		Transform3D startTrans = new Transform3D();
 		startTrans.setTranslation(camStart);
-		
 		viewTrans.setTransform(new Transform3D(startTrans));
 		viewTrans.addChild(camera);
 		
+		//fügt der KameraGruppe den Navigator hinzu
 		keybhv = new KeyNavigatorBehavior(viewTrans);
-		keybhv.setSchedulingBounds(new BoundingSphere(new Point3d(), 500.0));
+		keybhv.setSchedulingBounds(new BoundingSphere(new Point3d(), 1500.0));
 		
 		return viewTrans;
 	}
 
+	/**
+	 * Erstellt den Boden und fügt ihn der Gesamtszene hinzu
+	 */
 	private void planeSetup()
 	{
 		Transform3D bodenTrans = new Transform3D();
 		TransformGroup bodenTG = new TransformGroup();
 
+		//modifiziert die Größe des Bodens
 		float planeY = (float) ImageLoader.getImageHeight() *10f;
 		float planeX = (float) ImageLoader.getImageWidth() *10f;
 		
+		//erstellt eine Appearance für den Boden
 		Color3f c3f = new Color3f(0.3f, 0.3f, 0.3f);
 		Appearance ap = new Appearance();
 		ColoringAttributes cA = new ColoringAttributes(c3f, ColoringAttributes.NICEST);
@@ -172,19 +185,19 @@ public class GUI extends JFrame
 		//float planeXPos = planeX/2;
 		
 		Vector3f planePos = new Vector3f(0, 0, 0);
-		
 		bodenTrans.setTranslation(planePos);
-	
 		bodenTG.addChild(plane);
 		bodenTG.setTransform(bodenTrans);
-		
+		//fügt den Boden der Gesamtszene hinzu
 		bG.addChild(bodenTG);
 	}
 
+	/**
+	 * Lädt die Wände und die Texturen für die Wände
+	 */
 	private void objectSetup()
 	{
-		//textures
-		
+		//Lädt die Textur		
 		TextureLoader loader = new TextureLoader("src\\view\\testtext.jpg", "RGB", new Container());
 		Texture wallTex = loader.getTexture();
 		
@@ -194,13 +207,13 @@ public class GUI extends JFrame
 		TextureAttributes wallTexAt = new TextureAttributes();
 		wallTexAt.setTextureMode(TextureAttributes.REPLACE);
 		
-		//Wände
 		Appearance ap = new Appearance();
 		ap.setTexture(wallTex);
 		ap.setTextureAttributes(wallTexAt);
 		
 		int primflags = Primitive.GENERATE_NORMALS + Primitive.GENERATE_TEXTURE_COORDS;
 		
+		//Erstellt die Wände als Boxen für jeden schwarzen Pixel
 		ArrayList<Point> p = Objekte.getPunkte();
 		
 		float xToZero = (float) ((float) 0-p.get(0).getX()*10);
@@ -225,25 +238,28 @@ public class GUI extends JFrame
 			Vector3f cubePos = new Vector3f(x,10.0f,y);
 			
 			cubeTrans.setTranslation(cubePos);
-			
 			cubeTG.setTransform(cubeTrans);
 			cubeTG.addChild(cube);
+			//Fügt die einzelnen Wände der Szene hinzu
 			bG.addChild(cubeTG);
 		}
 	}
-	
+
+	/**
+	 * Lädt Items für die jeweiligen blauen Punkte auf dem Bild.
+	 */
 	private void itemSetup()
 	{
 		ArrayList<Point> p = Objekte.getPunkteBlau();
-		System.out.println("Angekommen");
-
+		
 		if (p.size() != 0)
 		{
-			System.out.println("size ist nicht 0");
+			//System.out.println(p.size());
+			//System.out.println("Items sind vorhanden");
 			for(int i = 0; i < p.size(); i++)
 			{
 				TransformGroup tg = new TransformGroup();
-				tg.addChild(ObjectLoader.getItem(1));
+				tg.addChild(ObjectLoader.getItem(0));
 				
 				float Y = (float) p.get(i).getY();
 				float X = (float) p.get(i).getX();
@@ -260,22 +276,29 @@ public class GUI extends JFrame
 		}
 	}
 	
+	/**
+	 * Erstellt die Lichter für die Szene
+	 */
 	private void lightSetup()
 	{		
+		//erstellt ein neues Directional Light
 		Color3f lightcolor = new Color3f(1f, 1f, 1f);
-		BoundingSphere bounds = new BoundingSphere(new Point3d(0.0,0.0,0.0), 100.0);
+		BoundingSphere bounds = new BoundingSphere(new Point3d(0.0,0.0,0.0), 1000.0);
 		Vector3f light1dir = new Vector3f(4.0f, -7.0f, -12.0f);
 		
 		DirectionalLight light = new DirectionalLight(lightcolor, light1dir);
 		light.setInfluencingBounds(bounds);
 		bG.addChild(light);
-		
-		Color3f aLightColor = new Color3f(1.0f, 1.0f, 1.0f);
-		AmbientLight aLight = new AmbientLight(aLightColor);
+		//erstellt ein neues Ambient Light
+		AmbientLight aLight = new AmbientLight(lightcolor);
 		aLight.setInfluencingBounds(bounds);
 		bG.addChild(aLight);
 	}
 	
+	/**
+	 * Erstellt den Canvas.
+	 * @return Canvas
+	 */
 	private Canvas3D createCanvas()
 	{
 		GraphicsConfigTemplate3D template = new GraphicsConfigTemplate3D();

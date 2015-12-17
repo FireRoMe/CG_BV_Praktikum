@@ -1,14 +1,9 @@
+/**
+ * Eine veraltete Version der GUI Klasse, die nicht funktioniert hatte.
+ */
+
 package view;
 /*
-veraltete GUI Klasse
-
-
- * Die GUI Klasse beinhaltet die graphische Anzeige.
- * @author
- * @version 0.1
-
-
-
 import java.awt.GraphicsConfiguration;
 
 import javax.media.j3d.*;

@@ -1,4 +1,4 @@
-/*
+/**
  * Die Labyrinth Klasse enthält die main-Methode
  * @author
  * @version 0.1
@@ -6,24 +6,27 @@
 package control;
 
 import data.ImageLoader;
-
 import data.Objekte;
 import view.GUI;
 
-public class Labyrinth {
-
-	/** Startet das Spiel.
+public class Labyrinth 
+{
+	/** Die Labyrinth Klasse Startet das Programm.
 	 */
-	public static void main(String[] args) {
-
-		//Initialisiert den ImageLoader
+	public static void main(String[] args) 
+	{
+		/** Initialisiert den ImageLoader, der das Bild einlädt und verarbeitet
+		 */
 		ImageLoader imLoad = new ImageLoader();
-		//Initialisiert die Objekt, die aus dem ImageLoader gelesen werden
+		/** Initialisiert die Objekt, die aus dem ImageLoader gelesen werden
+		 */
+		@SuppressWarnings("unused")
 		Objekte o = new Objekte(imLoad.getImage());
-		//Initialisiert das GUI
+		/** Initialisiert das GUI
+		 */
+		@SuppressWarnings("unused")
 		GUI gui = new GUI();
-		//Initialisiert das Spiel und übergibt ihm das GUI
-		Spiel spiel=new Spiel(gui);
+		/** Initialisiert das Spiel und übergibt ihm das GUI
+		 */
 	}
-
 }

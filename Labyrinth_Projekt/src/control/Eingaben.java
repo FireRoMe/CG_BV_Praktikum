@@ -1,4 +1,5 @@
-/**Erst als Klasse in der die Eingaben verarbeitet werden angedacht, diese hat sich dann jedoch als unnötig erwiesen.
+/**Erst als Klasse in der die Eingaben verarbeitet werden angedacht, diese hat sich dann jedoch als unnötig erwiesen. Stattdessen wurde
+ * in der GUI Klasse der KeyNavigator benutzt.
  */
 package control;
 /*

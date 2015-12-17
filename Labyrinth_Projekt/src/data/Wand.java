@@ -1,4 +1,9 @@
-/*package data;
+/**
+ * Klasse sollte eigentlich benutzt werden, um Wände zu konstruieren, wurde aber aus Zeitgründen verworfen.
+ * Stattdessen wurden einfache Boxen benutzt.
+ */
+package data;
+ /*
 
 import java.awt.Point;
 import java.awt.image.BufferedImage;

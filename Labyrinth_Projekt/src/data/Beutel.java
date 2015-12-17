@@ -1,4 +1,4 @@
-/*
+/**
  * Gibt nur punkte
  * @author
  * @version 0.1

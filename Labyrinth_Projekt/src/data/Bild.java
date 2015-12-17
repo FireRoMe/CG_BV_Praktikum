@@ -1,4 +1,4 @@
-/*
+/**
  * In der Bild Klasse kann ein Bild mit den Daten aus dem Bild gespeichert werden.
  * @author
  * @version 0.1

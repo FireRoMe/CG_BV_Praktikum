@@ -1,28 +1,26 @@
+/**
+ * ObjectLoader wird benutzt, um .obj Dateien für die Items zu laden.
+ * 
+ *  @author Tom Quinders
+ *  @version 1.0.0
+ */
 package data;
 
 import java.io.FileNotFoundException;
 
-import javax.media.j3d.Background;
-import javax.media.j3d.BoundingSphere;
 import javax.media.j3d.BranchGroup;
-import javax.media.j3d.Canvas3D;
-import javax.media.j3d.DirectionalLight;
-import javax.media.j3d.Transform3D;
-import javax.media.j3d.TransformGroup;
-import javax.swing.JFrame;
-import javax.vecmath.Color3f;
-import javax.vecmath.Point3d;
-import javax.vecmath.Vector3f;
-
 import com.sun.j3d.loaders.IncorrectFormatException;
 import com.sun.j3d.loaders.ParsingErrorException;
 import com.sun.j3d.loaders.Scene;
 import com.sun.j3d.loaders.objectfile.ObjectFile;
-import com.sun.j3d.utils.behaviors.vp.OrbitBehavior;
-import com.sun.j3d.utils.universe.SimpleUniverse;
 
 public class ObjectLoader
 {
+	/**
+	 * Methode, die aus einer .obj Datei die gewünschten Items lädt
+	 * @param ID des Items, das geladen werden soll
+	 * @return BranchGroup, die das neu geladene Item enthält
+	 */
 	public static BranchGroup getItem(int ID)
 	{
 		ObjectFile obj = new ObjectFile();
@@ -33,7 +31,7 @@ public class ObjectLoader
 		case 0:
 			try
 			{
-				loadedScene = obj.load("src\\models\\Teleporter.obj");
+				loadedScene = obj.load("src\\models\\Beutel.obj");
 			} catch (FileNotFoundException | IncorrectFormatException
 					| ParsingErrorException e)
 			{
@@ -53,7 +51,7 @@ public class ObjectLoader
 		case 2:
 			try
 			{
-				loadedScene = obj.load("src\\models\\Beutel.obj");
+				loadedScene = obj.load("src\\models\\Teleporter.obj");
 			} catch (FileNotFoundException | IncorrectFormatException
 					| ParsingErrorException e)
 			{

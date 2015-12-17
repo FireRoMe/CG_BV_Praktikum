@@ -1,16 +1,15 @@
-/*
+/**
  * Die ImageLoader Klasse ermöglicht es, Bilder zu laden und zu verarbeiten.
  * @author
  * @version 0.1
  */
-
 package data;
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
 
 public class ImageLoader
@@ -31,7 +30,7 @@ public class ImageLoader
 	 * Nicht mehr enthalten, da nicht mehr benötigt. */
 	//private int[][] checkMatrix;
 	
-	/** Erstellt einen Imageloader.
+	/** Erstellt einen Imageloader und führt die Methoden loadIamge, filter und border aus.
 	 */
 	public ImageLoader()
 	{
@@ -47,7 +46,8 @@ public class ImageLoader
 		return rand;
 	}
 
-	//getter und setter für Höhe und Breite des Bildes
+	/** Getter und Setter für Höhe und Breite des Bildes
+	 */
 	public static int getImageHeight()
 	{
 		return imageHeight;
@@ -68,7 +68,7 @@ public class ImageLoader
 		ImageLoader.imageWidth = imageWidth;
 	}
 
-	/** Lade ein Bild.
+	/** Lade ein Bild. Das Bild ist momentan noch vorgegeben.
 	 */
 	public void loadImage()
 	{
@@ -76,15 +76,16 @@ public class ImageLoader
 		{
 			b = ImageIO.read(new File("src//bsp2.jpg"));
 	
-		    System.out.println("Bild geladen");
-		    System.out.println(b.getHeight());
-		    System.out.println(b.getWidth());
+		    //System.out.println("Bild geladen");
+			//System.out.println(b.getHeight());
+		    //System.out.println(b.getWidth());
 		    setImageHeight(b.getHeight());
 		    setImageWidth(b.getWidth());
 		} 
 		catch (IOException e) 
 		{
-			System.out.println("Fehler");
+			System.out.println("Lesefehler");
+			e.printStackTrace();
 		}	
 	}
 
@@ -141,13 +142,13 @@ public class ImageLoader
 			//System.out.println("");
 		}
 		try {
-		    // retrieve image
+		    /**Speichert das gefilterte Bild ab
+		     */
 		    File outputfile = new File("src//control//afterFilter.png");
 		    ImageIO.write(afterFilter, "png", outputfile);
 		} catch (IOException e) {
-		   
+		   e.printStackTrace();
 		}
- 
 	}
 	
 	/** Setze einen 1 Pixel grossen weissen Rand um das Bild.
@@ -167,17 +168,15 @@ public class ImageLoader
 		    File outputfile = new File("src//control//test.jpg");
 		    ImageIO.write(rand, "png", outputfile);
 		} catch (IOException e) {
-		   
+		   e.printStackTrace();
 		}
 	}
 	
-	
-	
-	/** Erst angedacht zum Analysieren des Bildes, ist jedoch durch etwas anderes ersetzt worden.
+	/** Erst angedacht zum Analysieren des Bildes, ist jedoch durch eine Funktion in Objekte ersetzt worden.
 	 */
-	public void analyzeImage()
+	/*public void analyzeImage()
 	{
-	/*	checkMatrix = new int[afterFilter.getWidth()][afterFilter.getHeight()];
+		checkMatrix = new int[afterFilter.getWidth()][afterFilter.getHeight()];
 		
 		for(int i=0; i < afterFilter.getWidth(); i++)
 		{
@@ -218,9 +217,8 @@ public class ImageLoader
 				
 			}
 		}
-		
-			*/
-		}
+	}
+	*/
 	
 	/** Ueberprueft die Farben auf schwarz,blau,gruen und rot.
 	 * Wird nicht mehr genutzt.
