@@ -5,9 +5,12 @@
  */
 package data;
 
+import java.awt.Color;
 import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class Objekte 
 {
@@ -32,9 +35,14 @@ public class Objekte
 	
 	public Objekte(BufferedImage img){
 		this.img=img;
+
+		//medianRot();
+		//medianGruen();
+
 		findePunkte();
 	//medianRot();
 	//	medianGruen();
+
 	}
 	
 //sucht nach schwarzen Kantenpunkten in dem Bild
@@ -133,7 +141,10 @@ public class Objekte
 	public static ArrayList<Point> getPunkteBlau()
 	{
 		return punkteBlau;
-	}
+
+	}	
+
+	
 
 	public static Point getPlayerStart()
 	{
@@ -144,4 +155,5 @@ public class Objekte
 	{
 		return gameStop;
 	}
+
 }

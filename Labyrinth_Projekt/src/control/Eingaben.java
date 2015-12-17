@@ -1,3 +1,5 @@
+/**Erst als Klasse in der die Eingaben verarbeitet werden angedacht, diese hat sich dann jedoch als unnötig erwiesen.
+ */
 package control;
 /*
 import java.awt.event.KeyEvent;

@@ -24,6 +24,7 @@ public class Spiel
 		imageLoader=new ImageLoader();
 		//Wand w = new Wand(imageLoader.getImage());
 		Objekte o = new Objekte(imageLoader.getImage());
+		Item i = new Item();
 	}
 	
 	public void texturenLaden()
